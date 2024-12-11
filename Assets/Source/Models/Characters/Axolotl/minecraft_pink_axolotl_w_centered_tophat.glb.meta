@@ -1,0 +1,110 @@
+fileFormatVersion: 2
+guid: f7c82d30ee57a654183c05b0ea5a9ccb
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: e760645524cc724448686115d17b1d50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark_mid_purp_pink
+    second: {fileID: 2100000, guid: 61d8e5e96be43904181f83df20de52b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark_purp_pink
+    second: {fileID: 2100000, guid: 747db3e1e9fea904386265b062187af0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darker_pink
+    second: {fileID: 2100000, guid: 1eb80d0aef42a044c8dc101ef0e3adbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkererER_pink
+    second: {fileID: 2100000, guid: 86dcc156930cabc45a2a1868b978faec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkerer_pink
+    second: {fileID: 2100000, guid: 455ce9776c4710e49ad1a1eca708d86a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkerer_pink_1
+    second: {fileID: 2100000, guid: 23e614b58febfc943ac19cb224c02b80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mid_dark_pink
+    second: {fileID: 2100000, guid: be68ca15d6b63b44bb900ebcbb39c3fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mid_pink
+    second: {fileID: 2100000, guid: db6aea4ca44470b48914a69130fe5aeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: peachy_dark_pink
+    second: {fileID: 2100000, guid: d89c111592ed7dc429ed93ce79041353, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: peachy_darker_pink
+    second: {fileID: 2100000, guid: 0057bc3e1b8935a4fa932285f3dbd890, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 804e1ce4c496647cfa3f1a1134187c71, type: 3}
+  _removeEmptyRootObjects: 1
+  _scaleFactor: 1
+  _maximumLod: 300
+  _readWriteEnabled: 1
+  _generateColliders: 0
+  _swapUvs: 0
+  _generateLightmapUVs: 0
+  _importBlendShapeNames: 1
+  _blendShapeFrameWeight:
+    _option: 0
+    _multiplier: 1
+  _importNormals: 0
+  _importTangents: 0
+  _importCamera: 2
+  _importAnimations: 2
+  _addAnimatorComponent: 0
+  _animationLoopTime: 1
+  _animationLoopPose: 0
+  _importMaterials: 1
+  _enableGpuInstancing: 0
+  _useSceneNameIdentifier: 1
+  _textureCompression: -50
+  optimizeGameObjects: 0
+  materials:
+  - {fileID: -2723870855932777330, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: -9146925772714129977, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: 2298296815933433925, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: -4740647872851641158, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: -7924456854932133505, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: 2582851789169815081, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: 711466721531255799, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: 4362962105363994262, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: -3465854098552989034, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: 626219376318228239, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  - {fileID: 3303567753983253037, guid: f7c82d30ee57a654183c05b0ea5a9ccb, type: 3}
+  textures: []
+  hasSceneData: 1
+  hasAnimationData: 0
+  hasMaterialData: 1
+  hasTextureData: 0
+  animations: []
+  _extensions: []
+  _textures: []
+  _mainAssetIdentifier: scenes/Sketchfab_Scene
+  _importPlugins: []

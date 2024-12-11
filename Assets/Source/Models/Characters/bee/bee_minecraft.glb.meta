@@ -1,0 +1,110 @@
+fileFormatVersion: 2
+guid: a8a97f81cfcf0e245806353ee0a2bf79
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 673cf85987dc63f45870256def604e36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 2362c8d918b256d43b60d296564a02f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 3a901348c1121bf418d3cc8c8b764c54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 708d0c3ad0ccb4942bc9f15464d6f20e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: b7c8e7077a62a2d439abc77b833bab6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 9d2b8a8a5500dc6488726b4059c7b2ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: 75661f6a10388e14aabb2aa026495272, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: 8a3278119c1aa184aa5c90ec81a365ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.013
+    second: {fileID: 2100000, guid: 1ade5fa808b132546b36c2320637db6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.014
+    second: {fileID: 2100000, guid: 988011090ca77444f8cf9187118273d0, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 804e1ce4c496647cfa3f1a1134187c71, type: 3}
+  _removeEmptyRootObjects: 1
+  _scaleFactor: 0.2
+  _maximumLod: 300
+  _readWriteEnabled: 1
+  _generateColliders: 0
+  _swapUvs: 0
+  _generateLightmapUVs: 0
+  _importBlendShapeNames: 1
+  _blendShapeFrameWeight:
+    _option: 0
+    _multiplier: 1
+  _importNormals: 0
+  _importTangents: 0
+  _importCamera: 2
+  _importAnimations: 2
+  _addAnimatorComponent: 0
+  _animationLoopTime: 1
+  _animationLoopPose: 0
+  _importMaterials: 1
+  _enableGpuInstancing: 0
+  _useSceneNameIdentifier: 1
+  _textureCompression: -50
+  optimizeGameObjects: 0
+  materials:
+  - {fileID: -6478536213147159724, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: -3846018093981099296, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: 4874126678125670354, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: -6922793697723135513, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: -6629797300637803691, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: -6087771358165109452, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: 1886820026795636259, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: 9185737683893222716, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: 3780671244086486322, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  - {fileID: 6699446615349125189, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  textures:
+  - {fileID: 6983701643236107813, guid: a8a97f81cfcf0e245806353ee0a2bf79, type: 3}
+  hasSceneData: 1
+  hasAnimationData: 1
+  hasMaterialData: 1
+  hasTextureData: 1
+  animations:
+  - name: Animation
+  _extensions: []
+  _textures:
+  - texture: {fileID: 6983701643236107813, guid: a8a97f81cfcf0e245806353ee0a2bf79,
+      type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  _mainAssetIdentifier: scenes/Sketchfab_Scene
+  _importPlugins: []

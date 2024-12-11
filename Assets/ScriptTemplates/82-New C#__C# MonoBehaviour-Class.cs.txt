@@ -1,0 +1,38 @@
+using Kuhpik;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using NaughtyAttributes;
+using Supyrb;
+using System.Linq;
+
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    public Vector3 position => transform.position;
+    public Vector3 eulerAngles => transform.eulerAngles;
+    public Quaternion rotation => transform.rotation;
+
+    public #SCRIPTNAME# PreStart()
+    {
+    
+        return this;
+    }
+
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void Upd()
+    {
+        
+    }
+}

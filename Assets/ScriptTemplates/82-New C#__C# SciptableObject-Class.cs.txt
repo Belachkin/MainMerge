@@ -1,0 +1,12 @@
+using UnityEngine;
+using NaughtyAttributes;
+using System.Collections.Generic;
+
+[CreateAssetMenu(menuName = "Config/#SCRIPTNAME#")]
+public sealed class #SCRIPTNAME# : ScriptableObject
+{
+	public string Name;
+	public int value;
+}
+
+

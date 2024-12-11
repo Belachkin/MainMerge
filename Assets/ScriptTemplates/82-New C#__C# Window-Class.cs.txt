@@ -1,0 +1,32 @@
+using Kuhpik;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using NaughtyAttributes;
+using Supyrb;
+using System.Linq;
+
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    public Button button;
+    public Image image;
+    public Text txt;
+    public GameObject obj;
+    bool active;
+
+    public #SCRIPTNAME# PreStart()
+    {
+        gameObject.SetActive(false);
+        return this;
+    }
+
+    public void Show(bool status)
+    {
+        if (active == status) return;
+        active = status;
+        gameObject.SetActive(status);
+    }
+}

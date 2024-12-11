@@ -1,0 +1,74 @@
+fileFormatVersion: 2
+guid: 344dd411070738744bcdd14fd8eca9d4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 4bdfa0a50ab93174aa5e2e4a70ef6752, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: c4e5d41f809123041bd3bcf0318dab64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: be40d139ebb2bfc47ba0ccba1f3c1d23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 1357b46668d2fa749a340f73a20e1d4d, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 804e1ce4c496647cfa3f1a1134187c71, type: 3}
+  _removeEmptyRootObjects: 1
+  _scaleFactor: 1
+  _maximumLod: 300
+  _readWriteEnabled: 1
+  _generateColliders: 0
+  _swapUvs: 0
+  _generateLightmapUVs: 0
+  _importBlendShapeNames: 1
+  _blendShapeFrameWeight:
+    _option: 0
+    _multiplier: 1
+  _importNormals: 0
+  _importTangents: 0
+  _importCamera: 2
+  _importAnimations: 2
+  _addAnimatorComponent: 0
+  _animationLoopTime: 1
+  _animationLoopPose: 0
+  _importMaterials: 1
+  _enableGpuInstancing: 0
+  _useSceneNameIdentifier: 1
+  _textureCompression: -50
+  optimizeGameObjects: 0
+  materials:
+  - {fileID: -876546973899608171, guid: 344dd411070738744bcdd14fd8eca9d4, type: 3}
+  - {fileID: -6478536213147159724, guid: 344dd411070738744bcdd14fd8eca9d4, type: 3}
+  - {fileID: -3846018093981099296, guid: 344dd411070738744bcdd14fd8eca9d4, type: 3}
+  - {fileID: 4874126678125670354, guid: 344dd411070738744bcdd14fd8eca9d4, type: 3}
+  textures:
+  - {fileID: 6983701643236107813, guid: 344dd411070738744bcdd14fd8eca9d4, type: 3}
+  hasSceneData: 1
+  hasAnimationData: 1
+  hasMaterialData: 1
+  hasTextureData: 1
+  animations:
+  - name: Run
+  _extensions: []
+  _textures:
+  - texture: {fileID: 6983701643236107813, guid: 344dd411070738744bcdd14fd8eca9d4,
+      type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  _mainAssetIdentifier: scenes/Sketchfab_Scene
+  _importPlugins: []

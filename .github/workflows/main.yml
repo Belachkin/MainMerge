@@ -1,0 +1,178 @@
+name: Android build
+
+on: [push]
+
+env:
+  channel: 'C022RAH0K6X'
+  token: 'xoxb-1482890844194-2290431801809-AgX97RmFIcbMM6cyrBoSIU5q'
+  keystore: 'dorfer.keystore'
+  keystorepass: '4afW7SwZjsN&kKtXe7KwS%Ye'
+  keystorealias: "release"
+  keystorealiaspass: '4afW7SwZjsN&kKtXe7KwS%Ye'
+  buildtarget: 'Android'
+
+jobs:
+  build:
+    name: Build my project ✨
+    runs-on: ubuntu-latest
+    # Skips action if no "Release" word present in commit
+    if: "contains(github.event.commits[0].message, 'Release')" 
+
+    steps:
+    # Stop jobs that's not complete (Saves time with hotfix pushes)
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+          
+    # Quick fix for issue https://github.community/t/bug-strange-no-space-left-on-device-ioexceptions-on-github-runners/17616/11
+      - name: Free disk space
+        run: |
+          df -h
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          df -h
+          
+      - uses: actions/checkout@v2
+
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: repo-tag
+        with:
+          semver_only: true
+
+      # Restore cache
+      - uses: pat-s/always-upload-cache@v3
+        with:
+          path: Library
+          key: Library-${{ env.channel }}-${{ env.buildtarget }}-${{ steps.repo-tag.outputs.tag }}
+          restore-keys: |
+            Library-${{ env.channel }}-${{ env.buildtarget }}-${{ steps.repo-tag.outputs.tag }}-
+            Library-${{ env.channel }}-${{ env.buildtarget }}-
+            Library-${{ env.channel }}-
+            Library-
+
+    # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        id: unitybuild
+        env:
+          UNITY_EMAIL: nechaev.finec@gmail.com
+          UNITY_PASSWORD: 7VW-FDy-bSg-Zrf
+          UNITY_SERIAL: SC-ZWKU-U8UF-6PE7-AR9D-VCAQ
+        with:
+          versioning: Semantic
+          androidAppBundle: true # Build .aab instead of .apk
+          targetPlatform: ${{ env.buildtarget }}
+          buildMethod: DorferGames.Editor.BuildOnMobile.BuildOptions
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.event.repository.name }}
+          path: build/${{ env.buildtarget }}
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: ${{ github.event.repository.name }}
+          
+    # Tools
+      - name: Setup JDK
+        uses: actions/setup-java@main
+        with:
+          distribution: 'adopt' # See 'Supported distributions' for available options
+          java-version: '8'
+
+      - name: Look for Bundletool latest tag
+        uses: oprypin/find-latest-tag@v1
+        id: bundletag
+        with:
+          repository: google/bundletool  # The repository to scan.
+          releases-only: true  # We know that all relevant tags have a GitHub release for them.
+
+      - name: Set bundletool version to environment
+        run: |
+          echo "tag=${{ steps.bundletag.outputs.tag }}" >> $GITHUB_ENV
+          echo "bundletool=bundletool-all-${{ steps.bundletag.outputs.tag }}.jar" >> $GITHUB_ENV
+                  
+      - name: Download Bundletool
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: "google/bundletool"
+          tag: "${{ env.tag }}"
+          fileName: ${{ env.bundletool }}
+        
+      - name: Insall 7-zip
+        run: sudo apt-get install p7zip-full
+        
+    # Pre uploading work
+      - name: Create universal apk
+        run: >
+          java -jar ${{ env.bundletool }} build-apks --bundle=${{ env.buildtarget }}.aab --output=./release.apks 
+          --mode=universal 
+          --overwrite 
+          --ks=${{ env.keystore }}
+          --ks-pass=pass:'${{ env.keystorepass }}'
+          --ks-key-alias=${{ env.keystorealias }}
+          --key-pass=pass:'${{ env.keystorealiaspass }}'
+          
+      - name: Unzip apks from releases archive
+        run: 7z e release.apks
+          
+      - name: Display structure of downloaded files
+        run: ls
+
+      - name: Create APK and AAB name
+        id: namecreator
+        run: echo "::set-output name=name::${{ steps.unitybuild.outputs.productNameSet }} v${{ steps.unitybuild.outputs.productVersionSet }} (${{ steps.unitybuild.outputs.productVersionCodeSet }})"
+
+      - name: Rename files
+        run: |
+          mv ${{ env.buildtarget }}.aab '${{ steps.namecreator.outputs.name }}.aab'
+          mv universal.apk '${{ steps.namecreator.outputs.name }}.apk'        
+          
+    # Upload to Slack
+      - name: Send message to Slack
+        uses: archive/github-actions-slack@master
+        id: message
+        with:
+          slack-function: send-message
+          slack-bot-user-oauth-access-token: ${{ env.token }}
+          slack-channel: ${{ env.channel }}
+          slack-text: |
+            Билд готов! Файлы будут загружены в тред
+            Отображаемое название: *${{ steps.unitybuild.outputs.productNameSet }}*
+            ID приложения: *${{ steps.unitybuild.outputs.productBundleSet }}*
+            Версия: *${{ steps.unitybuild.outputs.productVersionSet }}* Code: *${{ steps.unitybuild.outputs.productVersionCodeSet }}*
+            Unity: *${{ steps.unitybuild.outputs.unityVersion }}*
+            Хорошего дня :з
+            
+      - name: Save message's TS to environment
+        run: echo "ts=${{ fromJson(steps.message.outputs.slack-result).response.message.ts }}" >> $GITHUB_ENV
+
+      - name: Send APK file
+        run: > 
+          curl 
+          -F "file=@${{ steps.namecreator.outputs.name }}.apk" 
+          -F "initial_comment=Для теста." 
+          -F "channels=${{ env.channel }}" 
+          -F "thread_ts=${{ env.ts }}" 
+          -H "Authorization: Bearer ${{ env.token }}" 
+          https://slack.com/api/files.upload
+          
+      - name: Send APK file
+        run: > 
+          curl 
+          -F "file=@${{ steps.namecreator.outputs.name }}.aab" 
+          -F "initial_comment=Для стора." 
+          -F "channels=${{ env.channel }}" 
+          -F "thread_ts=${{ env.ts }}" 
+          -H "Authorization: Bearer ${{ env.token }}" 
+          https://slack.com/api/files.upload
+
+      - name: Cleanup to avoid storage limit
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: ${{ github.event.repository.name }}

@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7786abb8be453aae997e88961608c3, type: 3}
+  m_Name: UI Config
+  m_EditorClassIdentifier: 
+  EngFlag: {fileID: 21300000, guid: bbea34ae3cd1c15478522238b4c1c02e, type: 3}
+  RuFlag: {fileID: 21300000, guid: 674fdd4fe87478b40bf7f023e28ef0ad, type: 3}
+  SoundOn: {fileID: 21300000, guid: 88a09239f3cf0324c94285fa7af140b7, type: 3}
+  SoundOff: {fileID: 21300000, guid: 6beb49b6bf4d72e4bae161d333943257, type: 3}
+  MusicOn: {fileID: 21300000, guid: 232de978be916a24da1a8c1446729123, type: 3}
+  MusicOff: {fileID: 21300000, guid: 8614ef3dcae213f4e99b99edf07ef33c, type: 3}
+  MoneyActive: {fileID: 21300000, guid: c72ee78fa6f823248adf6ffb348e44ff, type: 3}
+  MoneyNotActive: {fileID: 21300000, guid: a95934e94f51205489621a97b635a42e, type: 3}
+  ButtonBuyActive: {fileID: 21300000, guid: a58ffbc8a72439e409d84e8fdbc8228d, type: 3}
+  ButtonBuyNotActive: {fileID: 21300000, guid: dfa9ef34e276b124f89d0faf994ad5fa, type: 3}
+  UiNames:
+    _serializedList:
+    - Key: 1
+      Value:
+        _serializedList:
+        - Key: 14
+          Value: INVENTORY
+        - Key: 15
+          Value: SHOP
+        - Key: 0
+          Value: OTHER GAMES
+        - Key: 1
+          Value: HAVING FUN?
+        - Key: 2
+          Value: RATE US PLEASE!
+        - Key: 3
+          Value: SURE
+        - Key: 4
+          Value: NO THANKS
+        - Key: 5
+          Value: SELECT
+        - Key: 6
+          Value: CLAIM
+        - Key: 7
+          Value: YOUR DAILY BONUS!
+        - Key: 8
+          Value: DAY
+        - Key: 9
+          Value: AD COMING IN
+        - Key: 10
+          Value: LOG IN
+        - Key: 11
+          Value: LOG IN!
+        - Key: 12
+          Value: YOU WILL BE ABLE TO RATE THE GAME
+        - Key: 13
+          Value: YOUR PROGRESS WILL BE SAVED IN THE CLOUD
+    - Key: 0
+      Value:
+        _serializedList:
+        - Key: 14
+          Value: "\u0418\u041D\u0412\u0415\u041D\u0422\u0410\u0420\u042C"
+        - Key: 15
+          Value: "\u041C\u0410\u0413\u0410\u0417\u0418\u041D"
+        - Key: 0
+          Value: "\u0414\u0420\u0423\u0413\u0418\u0415 \u0418\u0413\u0420\u042B"
+        - Key: 1
+          Value: "\u041D\u0420\u0410\u0412\u0418\u0422\u0421\u042F?"
+        - Key: 2
+          Value: "\u041E\u0426\u0415\u041D\u0418 \u0418\u0413\u0420\u0423, \u041F\u041E\u0416\u0410\u041B\u0423\u0419\u0421\u0422\u0410!"
+        - Key: 3
+          Value: "\u0425\u041E\u0420\u041E\u0428\u041E"
+        - Key: 4
+          Value: "\u041D\u0415\u0422, \u0421\u041F\u0410\u0421\u0418\u0411\u041E"
+        - Key: 5
+          Value: "\u0412\u042B\u0411\u0420\u0410\u0422\u042C"
+        - Key: 6
+          Value: "\u0417\u0410\u0411\u0420\u0410\u0422\u042C"
+        - Key: 7
+          Value: "\u0422\u0412\u041E\u0419 \u0415\u0416\u0415\u0414\u041D\u0415\u0412\u041D\u042B\u0419
+            \u0411\u041E\u041D\u0423\u0421!"
+        - Key: 8
+          Value: "\u0414\u0415\u041D\u042C"
+        - Key: 9
+          Value: "\u0420\u0415\u041A\u041B\u0410\u041C\u0410 \u0427\u0415\u0420\u0415\u0417"
+        - Key: 10
+          Value: "\u0410\u0412\u0422\u041E\u0420\u0418\u0417\u041E\u0412\u0410\u0422\u042C\u0421\u042F"
+        - Key: 11
+          Value: "\u0410\u0412\u0422\u041E\u0420\u0418\u0417\u0423\u0419\u0421\u042F!"
+        - Key: 12
+          Value: "\u0422\u042B \u0421\u041C\u041E\u0416\u0415\u0428\u042C \u041F\u041E\u0421\u0422\u0410\u0412\u0418\u0422\u042C
+            \u041E\u0426\u0415\u041D\u041A\u0423"
+        - Key: 13
+          Value: "\u0422\u0412\u041E\u0419 \u041F\u0420\u041E\u0413\u0420\u0415\u0421\u0421
+            \u0411\u0423\u0414\u0415\u0422 \u0421\u041E\u0425\u0420\u0410\u041D\u042F\u0422\u042C\u0421\u042F
+            \u0412\u042B \u041E\u0411\u041B\u0410\u041A\u0415"

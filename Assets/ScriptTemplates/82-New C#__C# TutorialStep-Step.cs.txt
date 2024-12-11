@@ -1,0 +1,40 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Snippets.Tutorial;
+using UnityEngine;
+
+[Serializable]
+public class #SCRIPTNAME# : TutorialStep
+{
+    GameData game;
+    PlayerData player;
+    GameConfig config;
+
+    protected override void OnBegin()
+    {
+        // You can leave this empty if OnUpdate is used.
+        // Or smth like this
+        // GameObject.FindObjectOfType<Player>().OnKilled += Complete;
+
+        game = Bootstrap.Instance.GameData;
+        player = Bootstrap.Instance.PlayerData;
+        config = Bootstrap.Instance.config;
+        //screen = UnityEngine.Object.FindObjectOfType<UpgradeScreen>(true);
+    }
+
+    protected override void OnComplete()
+    {
+        // You can leave this empty if OnUpdate is used.
+        // Or smth like this
+        // GameObject.FindObjectOfType<Player>().OnKilled -= Complete;
+    }
+
+    public override void OnUpdate()
+    {
+        // You can leave it empty. 
+        // Or smth like that
+        // if (Input.GetMouseButton(0))
+        //     Complete();
+    }
+}
