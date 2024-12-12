@@ -11,12 +11,14 @@ namespace Source.Scripts.Systems.Game
     public class TaskSystem : GameSystemWithScreen<GameUIScreen>
     {
         private EcsFilter filter;
+        private EcsFilter filter2;
         private bool isComplete = false;
         public override void OnInit()
         {
             base.OnInit();
 
             filter = eventWorld.Filter<MergeEvent>().End();
+            filter2 = eventWorld.Filter<StartLevelEvent>().End();
             
             InitTasks();
         }
@@ -31,6 +33,12 @@ namespace Source.Scripts.Systems.Game
 
                 screen.tasks[mergeType] -= 1;
                 screen.UpdateTask(mergeType);
+            }
+
+            foreach (var e in filter2)
+            {
+                isComplete = false;
+                InitTasks();
             }
 
             if (isComplete == false)
@@ -51,8 +59,6 @@ namespace Source.Scripts.Systems.Game
                     pool.LevelCompleteEvent.Add(eventWorld.NewEntity());
                 }
             }
-            
-            
         }
 
         private void InitTasks()

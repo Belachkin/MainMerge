@@ -28,6 +28,16 @@ public class GameUIScreen : UIScreen
         SerializedDictionary<MergeObjectType, int> levelTasks, 
         SerializedDictionary<MergeObjectType, Sprite> taskIcons)
     {
+
+        for (int i = taskPanel.childCount - 1; i >= 0; i--)
+        {
+            Transform child = taskPanel.GetChild(i);
+            Destroy(child.gameObject);
+        }
+        
+        tasks.Clear();
+        taskTexts.Clear();
+        
         foreach (var task in levelTasks)    
         {
             tasks.Add(task.Key, task.Value);

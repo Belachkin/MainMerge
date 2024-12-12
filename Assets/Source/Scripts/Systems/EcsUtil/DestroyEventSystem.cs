@@ -21,6 +21,7 @@ namespace Source.Scripts.Systems.EcsUtil
             AddFilter<MergeEvent>();
             AddFilter<NewObjectEvent>();
             AddFilter<LevelCompleteEvent>();
+            AddFilter<StartLevelEvent>();
         }
 
         private void AddFilter<T>() where T: struct

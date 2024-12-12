@@ -21,5 +21,8 @@
         
         INVENTORY,
         SHOP,
+        VICTORY,
+        NEXT_LEVEL,
+        LEVEL
     }
 }

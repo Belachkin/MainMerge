@@ -15,7 +15,7 @@ namespace Source.Scripts.Systems.Game
             base.OnInit();
             
             filter = eventWorld.Filter<LevelCompleteEvent>().End();
-            // screen.NextLevelButton.onClick.AddListener(() => NextLevel());
+            screen.NextLevelButton.onClick.AddListener(() => NextLevel());
         }
 
         public override void OnUpdate()
@@ -33,10 +33,10 @@ namespace Source.Scripts.Systems.Game
                     save.CurrentLevel = 0;
                 }
                 
+                screen.ThisLevelText.text = save.CurrentLevel.ToString();
                 screen.ShowPanel();
             }
         }
-        
         
         private void NextLevel()
         {
