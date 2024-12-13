@@ -38,6 +38,7 @@ namespace Source.Scripts.Systems.Game
         }
 
         public void StartLevel()
+        
         {
             ClearChildren();
             

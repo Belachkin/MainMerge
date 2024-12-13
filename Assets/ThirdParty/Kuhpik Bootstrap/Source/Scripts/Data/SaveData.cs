@@ -28,5 +28,7 @@ namespace Kuhpik
         public int CurrentLevel = 0;
         public int MaxLevel = 10;
         //public bool VibroOn = true;
+
+        public int Money = 0;
     }
 }

@@ -23,6 +23,8 @@ public class GameUIScreen : UIScreen
 
     public SerializedDictionary<MergeObjectType, int> tasks;
     public SerializedDictionary<MergeObjectType, TextMeshProUGUI> taskTexts;
+
+    public TextMeshProUGUI MoneyText;
     
     public void InitTasks(
         SerializedDictionary<MergeObjectType, int> levelTasks, 

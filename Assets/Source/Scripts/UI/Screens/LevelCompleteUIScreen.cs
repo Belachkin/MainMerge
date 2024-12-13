@@ -10,6 +10,7 @@ namespace Source.Scripts.UI.Screens
     {
         public GameObject victoryWindow;
         public ParticleSystem victoryParticles; 
+        public ParticleSystem emeraldParticles;
         public CanvasGroup victoryWindowCanvasGroup; 
         public float windowShowDuration = 2f; 
         public float particlesShowDuration = 1f; 
@@ -17,6 +18,7 @@ namespace Source.Scripts.UI.Screens
         public Button NextLevelButton;
         
         public TextMeshProUGUI ThisLevelText;
+        public TextMeshProUGUI AddMoneyText;
         
         public void ShowPanel()
         {
@@ -29,6 +31,11 @@ namespace Source.Scripts.UI.Screens
             
             sequence.AppendCallback(() => victoryParticles.Play()) 
                 .AppendInterval(particlesShowDuration);
+            
+            sequence.AppendInterval(1f);
+
+            sequence.AppendCallback(() => emeraldParticles.Play());
+
         }
 
         public void HidePanel()

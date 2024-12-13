@@ -22,6 +22,7 @@ namespace Source.Scripts.Systems.EcsUtil
             AddFilter<NewObjectEvent>();
             AddFilter<LevelCompleteEvent>();
             AddFilter<StartLevelEvent>();
+            AddFilter<AddMoneyEvent>();
         }
 
         private void AddFilter<T>() where T: struct

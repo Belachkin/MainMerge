@@ -10,11 +10,13 @@ namespace Source.Scripts.Systems.Game
     public class CompleteLevelSystem : GameSystemWithScreen<LevelCompleteUIScreen>
     {
         private EcsFilter filter;
+        private EcsFilter filter2;
         public override void OnInit()
         {
             base.OnInit();
             
             filter = eventWorld.Filter<LevelCompleteEvent>().End();
+            filter2 = eventWorld.Filter<AddMoneyEvent>().End();
             screen.NextLevelButton.onClick.AddListener(() => NextLevel());
         }
 
@@ -35,6 +37,12 @@ namespace Source.Scripts.Systems.Game
                 
                 screen.ThisLevelText.text = save.CurrentLevel.ToString();
                 screen.ShowPanel();
+            }
+
+            foreach (var e in filter2)
+            {
+                var money = pool.AddMoneyEvent.Get(e).Value;
+                screen.AddMoneyText.text = $"+{money}";
             }
         }
         
