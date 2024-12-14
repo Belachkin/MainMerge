@@ -36,6 +36,7 @@ namespace Source.Scripts.EcsUtil
         public readonly EcsPool<StartLevelEvent> StartLevelEvent;
         
         public readonly EcsPool<AddMoneyEvent> AddMoneyEvent;
+        public readonly EcsPool<UpdateMoneyEvent> UpdateMoneyEvent;
         public Pools(EcsWorld world, EcsWorld eventWorld)
         {
             this.eventWorld = eventWorld;
@@ -63,6 +64,7 @@ namespace Source.Scripts.EcsUtil
             LevelCompleteEvent = eventWorld.GetPool<LevelCompleteEvent>();
             StartLevelEvent = eventWorld.GetPool<StartLevelEvent>();
             AddMoneyEvent = eventWorld.GetPool<AddMoneyEvent>();
+            UpdateMoneyEvent = eventWorld.GetPool<UpdateMoneyEvent>();
         }
         
         public void Save()

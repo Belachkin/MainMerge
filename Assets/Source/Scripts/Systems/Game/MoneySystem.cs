@@ -10,12 +10,14 @@ namespace Source.Scripts.Systems.Game
     public class MoneySystem : GameSystemWithScreen<MoneyUIScreen>
     {
         private EcsFilter filter;
+        private EcsFilter filter2;
         public override void OnInit()
         {
             base.OnInit();
             screen.MoneyText.text = save.Money.ToString();
 
             filter = eventWorld.Filter<LevelCompleteEvent>().End();
+            filter2 = eventWorld.Filter<UpdateMoneyEvent>().End();
         }
 
         public override void OnUpdate()
@@ -29,6 +31,11 @@ namespace Source.Scripts.Systems.Game
                 
                 screen.MoneyText.text = save.Money.ToString();
                 pool.AddMoneyEvent.Add(eventWorld.NewEntity()).Value = getMoney;
+            }
+
+            foreach (var e in filter2)
+            {
+                screen.MoneyText.text = save.Money.ToString();
             }
         }
     }
