@@ -3876,11 +3876,11 @@ MonoBehaviour:
   showElementsOnHide: 0
   elementsToHideOnOpen: []
   elementsToShowOnHide: []
+  animationScale: 1.5
+  animationDuration: 0.2
   taskUIPrefab: {fileID: 7732547594315575588, guid: 8acc2003d057ab641899579adbb95bbc,
     type: 3}
   taskPanel: {fileID: 545405724}
-  tasks:
-    _serializedList: []
   taskTexts:
     _serializedList: []
   MoneyText: {fileID: 0}
@@ -5702,7 +5702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 1547429182}
   BonusType: 0
-  Cost: 100
+  Cost: 0
   CostText: {fileID: 73732701}
 --- !u!114 &1547429182
 MonoBehaviour:
@@ -6922,7 +6922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 2097758389}
   BonusType: 1
-  Cost: 150
+  Cost: 0
   CostText: {fileID: 408935888}
 --- !u!1 &2115604093
 GameObject:

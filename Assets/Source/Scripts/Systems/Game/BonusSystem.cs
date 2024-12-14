@@ -99,24 +99,45 @@ namespace Source.Scripts.Systems.Game
 
         private IEnumerator AutoMerge()
         {
-            pool.MergeEvent.Add(eventWorld.NewEntity());
-            
+            // pool.MergeEvent.Add(eventWorld.NewEntity());
+
             yield return new WaitForEndOfFrame();
+
+            int currentLevel = save.CurrentLevel;
+    
             
-            int i = 0;
-            foreach (var e in filter)
+
+            foreach (var task in config.LevelTasks[currentLevel])
             {
-                if (i >= 2)
+                var mergeType = task.Key;
+                
+                // Считаем объекты данного типа на сцене
+                var matchingObjects = new List<int>();
+                foreach (var e in filter)
                 {
-                    break;
+                    if (pool.MergeType.Get(e).MergeType == mergeType)
+                    {
+                        matchingObjects.Add(e);
+                        Debug.Log(mergeType);
+                    }
                 }
 
-                pool.Hoverable.Get(e).IsHovered = true;
+                if (matchingObjects.Count >= 2)
+                {
+                    // Отмечаем для слияния первые два объекта
+                    for (int i = 0; i < 2; i++)
+                    {
+                        pool.Hoverable.Get(matchingObjects[i]).IsHovered = true;
+                        
+                    }
 
-                i++;
-
+                    // Здесь можно вызывать слияние
+                    // pool.MergeEvent.Add(eventWorld.NewEntity());
+                    yield break;
+                }
             }
-            pool.MergeEvent.Add(eventWorld.NewEntity());
+
+            Debug.Log("No matching objects for tasks found to merge.");
             
         }
     }

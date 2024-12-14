@@ -12,51 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0bbf493a6018b41b94c2288283a11a, type: 3}
   m_Name: Game Config
   m_EditorClassIdentifier: 
-  MergeLevels: 000000000100000002000000
+  MergeLevels: 06000000200000000800000000000000
   MergeObjects:
     _serializedList:
-    - Key: 0
+    - Key: 6
       Value: {fileID: 5406850687036252098, guid: 2b294346bff278c469009960ac6ed7b6,
         type: 3}
-    - Key: 1
+    - Key: 0
+      Value: {fileID: 8128668236925612103, guid: 30152635cdd70594782edab9551c080b,
+        type: 3}
+    - Key: 32
       Value: {fileID: 6336030099333822293, guid: 75686979fe540ad4f9bf49e56f637f81,
         type: 3}
-    - Key: 2
+    - Key: 8
       Value: {fileID: 7230663703241184302, guid: 228ce15f65414394a96fa647742b8272,
         type: 3}
   TaskIcons:
     _serializedList:
-    - Key: 0
+    - Key: 6
       Value: {fileID: 21300000, guid: 8acc89abb5569bd42abac63b590fe303, type: 3}
-    - Key: 1
+    - Key: 32
       Value: {fileID: 21300000, guid: 9060e35c4ee6666488ad781e83fdec2c, type: 3}
-    - Key: 2
+    - Key: 8
       Value: {fileID: 21300000, guid: 674fdd4fe87478b40bf7f023e28ef0ad, type: 3}
   LevelTasks:
     _serializedList:
     - Key: 0
       Value:
         _serializedList:
-        - Key: 0
+        - Key: 6
           Value: 2
-        - Key: 1
+        - Key: 32
           Value: 2
     - Key: 1
       Value:
         _serializedList:
-        - Key: 0
+        - Key: 32
           Value: 4
   LevelStartMobs:
     _serializedList:
     - Key: 0
       Value:
         _serializedList:
-        - Key: 0
+        - Key: 6
           Value: 30
     - Key: 1
       Value:
         _serializedList:
-        - Key: 0
+        - Key: 6
           Value: 10
-        - Key: 1
+        - Key: 32
           Value: 2

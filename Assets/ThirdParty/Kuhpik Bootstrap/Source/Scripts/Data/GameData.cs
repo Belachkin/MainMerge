@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Leopotam.EcsLite;
+using Source.Scripts.Data;
 using Source.Scripts.EcsUtil;
 using Source.Scripts.Helpers;
 
@@ -27,5 +28,7 @@ namespace Kuhpik
 
         public CameraSwitcher CameraSwitcher;
         public AnimManager AnimManager;
+        
+        public SerializedDictionary<MergeObjectType, int> Tasks = new SerializedDictionary<MergeObjectType, int>();
     }
 }
