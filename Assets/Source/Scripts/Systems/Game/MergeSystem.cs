@@ -11,6 +11,8 @@ namespace Source.Scripts.Systems.Game
 {
     public class MergeSystem : GameSystem
     {
+        [SerializeField] private ParticleSystem _particleSystem;
+        
         EcsFilter filter;
         
         public override void OnInit()
@@ -81,14 +83,19 @@ namespace Source.Scripts.Systems.Game
         
         private void MoveAndAnimate(Transform target, Vector3 destination, int entity, bool isInstantiated, MergeObjectType mergeType)
         {
-            target.DOMove(destination, 0.25f) 
+            target.DOMove(destination, 1.5f) 
                 .SetEase(Ease.OutElastic); 
 
-            target.DOScale(Vector3.zero, 0.25f) 
+            target.DOScale(target.transform.localScale * 0.75f, 0.25f) 
                 .SetEase(Ease.OutElastic)
                 .OnComplete(() =>
                 {
+                    
                     Vector3 position = target.position;
+
+                    _particleSystem.transform.position = position;
+                    _particleSystem.Play();
+                    
                     // UnityEngine.Object.Destroy(target.gameObject); 
                     pool.DeadTag.Add(entity);
                     UnityEngine.Debug.Log($"Объект {target.name} уничтожен.");
