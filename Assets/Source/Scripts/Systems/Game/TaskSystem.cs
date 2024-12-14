@@ -35,8 +35,11 @@ namespace Source.Scripts.Systems.Game
             {
                 ref var mergeType = ref pool.MergeEvent.Get(e).MergeType;
 
-                game.Tasks[mergeType] -= 1;
-                UpdateTask(mergeType);
+                if (game.Tasks.ContainsKey(mergeType))
+                {
+                    game.Tasks[mergeType] -= 1;
+                    UpdateTask(mergeType);
+                }
             }
 
             foreach (var e in filter2)

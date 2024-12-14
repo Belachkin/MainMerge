@@ -30,7 +30,9 @@ namespace Source.Scripts.Systems.Game
         public override void OnInit()
         {
             base.OnInit();
-
+            
+            game.Tasks.Clear();
+            
             filter = world.Filter<HoverableComponent>().Inc<MergeTypeComponent>().End();
             
             InitBonuses();
@@ -77,7 +79,7 @@ namespace Source.Scripts.Systems.Game
             switch (bonusView.BonusType)
             {
                 case BonusType.AutoMerge:
-                    StartCoroutine(AutoMerge());
+                    StartCoroutine(AutoMerge(bonusView));
                     break;
                 case BonusType.Shake:
                     BonusShake();
@@ -97,47 +99,69 @@ namespace Source.Scripts.Systems.Game
             }
         }
 
-        private IEnumerator AutoMerge()
+        private IEnumerator AutoMerge(BonusView bonusView)
         {
-            // pool.MergeEvent.Add(eventWorld.NewEntity());
-
+            pool.ClearSelectedEvent.Add(eventWorld.NewEntity());
+            
             yield return new WaitForEndOfFrame();
 
-            int currentLevel = save.CurrentLevel;
-    
             
-
-            foreach (var task in config.LevelTasks[currentLevel])
+            
+            foreach (var task in game.Tasks)
             {
-                var mergeType = task.Key;
-                
-                // Считаем объекты данного типа на сцене
-                var matchingObjects = new List<int>();
-                foreach (var e in filter)
+                if (task.Value > 0)
                 {
-                    if (pool.MergeType.Get(e).MergeType == mergeType)
+                    var mergingObjects = new List<int>();
+                    var mergeType = task.Key;
+                    
+                    foreach (var e in filter)
                     {
-                        matchingObjects.Add(e);
-                        Debug.Log(mergeType);
-                    }
-                }
+                        
+                        if (pool.MergeType.Get(e).MergeType == mergeType)
+                        {
+                            mergingObjects.Add(e);
+                            
+                        }
 
-                if (matchingObjects.Count >= 2)
-                {
-                    // Отмечаем для слияния первые два объекта
-                    for (int i = 0; i < 2; i++)
-                    {
-                        pool.Hoverable.Get(matchingObjects[i]).IsHovered = true;
+                        
                         
                     }
-
-                    // Здесь можно вызывать слияние
-                    // pool.MergeEvent.Add(eventWorld.NewEntity());
-                    yield break;
+                    
+                    if (mergingObjects.Count >= 2)
+                    {
+                        
+                        for (int i = 0; i < 2; i++)
+                        {
+                            yield return new WaitForSeconds(0.25f);
+                            
+                            pool.Hoverable.Get(mergingObjects[i]).IsHovered = true;
+                            
+                        }
+                        
+                        yield break;
+                    }
+                    else
+                    {
+                        bonusView.Button.interactable = false;
+                        
+                        bonusView.Button.transform
+                            .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
+                                randomness: 90, fadeOut: true)
+                            .OnComplete(() =>
+                            {
+                                save.Money += bonusView.Cost;
+                                
+                                pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+                                
+                                bonusView.Button.interactable = true;
+                            });
+                        
+                        
+                        yield break;
+                    }
+                    
                 }
             }
-
-            Debug.Log("No matching objects for tasks found to merge.");
             
         }
     }

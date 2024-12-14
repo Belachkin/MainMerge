@@ -12,6 +12,8 @@ namespace Source.Scripts.Systems.Game
         private const int MaxHoverIndex = 2;
         
         private EcsFilter filter;
+        private EcsFilter filterClearSeclectedEvent;
+        private EcsFilter filterHovebles;
         private int HoverIndex = 0;
         private Camera camera;
         public override void OnInit()
@@ -21,6 +23,8 @@ namespace Source.Scripts.Systems.Game
             camera = Camera.main;
             
             filter = eventWorld.Filter<MergeEvent>().End();
+            filterClearSeclectedEvent = eventWorld.Filter<ClearSelectedEvent>().End();
+            filterHovebles = world.Filter<HoverableComponent>().End();
         }
 
         public override void OnUpdate()
@@ -54,9 +58,26 @@ namespace Source.Scripts.Systems.Game
             }
 
             foreach (var e in filter)
-            {
-                HoverIndex = 0;
+            {   
+                ClearAll();
             }
+
+            foreach (var e in filterClearSeclectedEvent)
+            {
+                ClearAll();
+            }
+            
+            
+        }
+
+        public void ClearAll()
+        {
+            foreach (var e in filterHovebles)
+            {
+                pool.Hoverable.Get(e).IsHovered = false;
+            }
+            
+            HoverIndex = 0;
         }
     }
 }
