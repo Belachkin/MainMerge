@@ -58,6 +58,7 @@ namespace Source.Scripts.Systems.Game
             foreach (var bonusView in screen.BonusViews)
             {
                 bonusView.Button.onClick.AddListener(() => BonusOnClick(bonusView));
+                bonusView.CostText.text = bonusView.Cost.ToString();
             }
         }
 
