@@ -12,50 +12,169 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0bbf493a6018b41b94c2288283a11a, type: 3}
   m_Name: Game Config
   m_EditorClassIdentifier: 
-  MergeLevels: 06000000200000000800000000000000
+  MergeLevels: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a000000
   MergeObjects:
     _serializedList:
-    - Key: 6
-      Value: {fileID: 5406850687036252098, guid: 2b294346bff278c469009960ac6ed7b6,
-        type: 3}
     - Key: 0
-      Value: {fileID: 8128668236925612103, guid: 30152635cdd70594782edab9551c080b,
+      Value: {fileID: 2602665263888329787, guid: 99d0b451bc95cc6408569aa7032e66c3,
         type: 3}
-    - Key: 32
-      Value: {fileID: 6336030099333822293, guid: 75686979fe540ad4f9bf49e56f637f81,
+    - Key: 1
+      Value: {fileID: 2288370697490741545, guid: ba3afb28920a4fb45978e4e65a774489,
+        type: 3}
+    - Key: 2
+      Value: {fileID: 7676693932843822015, guid: e56ecb88031c2cd4786426f1595df564,
+        type: 3}
+    - Key: 3
+      Value: {fileID: 412298368706121175, guid: e852fd5a9f8191143acf31f197657099,
+        type: 3}
+    - Key: 4
+      Value: {fileID: 1128460932862067328, guid: f6315e8fa57296d4a96d52981defae67,
+        type: 3}
+    - Key: 5
+      Value: {fileID: 2630259646933916573, guid: fe809818059591e43a482ab5e12722f0,
+        type: 3}
+    - Key: 6
+      Value: {fileID: 5940198804957096247, guid: 5956bed7d972a4b4685df00f7b8e7218,
+        type: 3}
+    - Key: 7
+      Value: {fileID: 2059818597093904274, guid: 377e4d8d7c14ca34ba31fc905e26a9bc,
         type: 3}
     - Key: 8
-      Value: {fileID: 7230663703241184302, guid: 228ce15f65414394a96fa647742b8272,
+      Value: {fileID: 1194174868145516894, guid: 8576f79c8974ec943bc5bdc88e6034dc,
+        type: 3}
+    - Key: 9
+      Value: {fileID: 5406850687036252098, guid: 2b294346bff278c469009960ac6ed7b6,
+        type: 3}
+    - Key: 10
+      Value: {fileID: 8777976513423657127, guid: 9c68e56b54103464e8a7c1d30e2cdb7e,
+        type: 3}
+    - Key: 11
+      Value: {fileID: 1211450531973448241, guid: 8e638b61d9bca9149823a99b58d7d4f8,
+        type: 3}
+    - Key: 12
+      Value: {fileID: 471880404531778073, guid: 668ce71b62235db45a3878b1ea6dbf8d,
+        type: 3}
+    - Key: 13
+      Value: {fileID: 3863094996014958938, guid: 2c05f0f7b6e86c140b58052c82d22645,
+        type: 3}
+    - Key: 14
+      Value: {fileID: 4939311143444513054, guid: e590a39003c977643909f2404228849c,
+        type: 3}
+    - Key: 15
+      Value: {fileID: 8511885312213820461, guid: b34bfcfbec8730344955d16afae72abb,
+        type: 3}
+    - Key: 16
+      Value: {fileID: 6336030099333822293, guid: 75686979fe540ad4f9bf49e56f637f81,
+        type: 3}
+    - Key: 17
+      Value: {fileID: 6622960924260489505, guid: ab09e4f5fd3e1a646b23a8441d8d1c26,
+        type: 3}
+    - Key: 18
+      Value: {fileID: 377338616566546641, guid: 0ec99cc81f05c3a459c10a5559d05b58,
+        type: 3}
+    - Key: 19
+      Value: {fileID: 8151578991919266255, guid: 50f5748daf662cc4eba737d57163d9f3,
+        type: 3}
+    - Key: 20
+      Value: {fileID: 3316822201380080568, guid: 96727dea2ed4564489e1436f81fcafed,
+        type: 3}
+    - Key: 21
+      Value: {fileID: 501489770159979080, guid: a0ad82c252a28a5449fe99a78855713f,
+        type: 3}
+    - Key: 22
+      Value: {fileID: 6332005001726065470, guid: f945239a27c559b4983297e4196d900e,
+        type: 3}
+    - Key: 23
+      Value: {fileID: 3569279139467943392, guid: 0877c669cc0c5b14fa270758e86ec505,
+        type: 3}
+    - Key: 24
+      Value: {fileID: 596162173503790496, guid: 452782594cc2eac4781c277fa61d21d9,
+        type: 3}
+    - Key: 25
+      Value: {fileID: 8810473693078518819, guid: cf415d8a463690b41b2783664fa99c29,
+        type: 3}
+    - Key: 26
+      Value: {fileID: 3318973858830036973, guid: 1cc626c96b35588439f9dd4d6c831417,
         type: 3}
   TaskIcons:
     _serializedList:
+    - Key: 0
+      Value: {fileID: 21300000, guid: 3264010764508d64e821c56c48421953, type: 3}
+    - Key: 1
+      Value: {fileID: 21300000, guid: 17d5a1bfc3261c0499aa4a58b171a0f4, type: 3}
+    - Key: 2
+      Value: {fileID: 21300000, guid: f0a9df4c3e1465f4abfda1b9cb08badb, type: 3}
+    - Key: 3
+      Value: {fileID: 21300000, guid: 5d72d5041dc45494cbce9dc9920405c3, type: 3}
+    - Key: 4
+      Value: {fileID: 21300000, guid: efcbb9986e138084ba7a6153d992df8e, type: 3}
+    - Key: 5
+      Value: {fileID: 21300000, guid: b88893386c98d2f489ef8aa3152ee0c3, type: 3}
     - Key: 6
-      Value: {fileID: 21300000, guid: 8acc89abb5569bd42abac63b590fe303, type: 3}
-    - Key: 32
-      Value: {fileID: 21300000, guid: 9060e35c4ee6666488ad781e83fdec2c, type: 3}
+      Value: {fileID: 21300000, guid: bfe639aac5a1baa4089afb36e86605db, type: 3}
+    - Key: 7
+      Value: {fileID: 21300000, guid: e2d2e2a300fbfdc4a9c341cd066b4cad, type: 3}
     - Key: 8
-      Value: {fileID: 21300000, guid: 674fdd4fe87478b40bf7f023e28ef0ad, type: 3}
+      Value: {fileID: 21300000, guid: b06a92b88f568494f94be6af63f76eff, type: 3}
+    - Key: 9
+      Value: {fileID: 21300000, guid: 1fd0b1781374f1044875f7df7b7a1652, type: 3}
+    - Key: 10
+      Value: {fileID: 21300000, guid: da4ffc5efa90f7542bc027ab5d152aec, type: 3}
+    - Key: 11
+      Value: {fileID: 21300000, guid: db437e892458d0941b980f3aaaa16575, type: 3}
+    - Key: 12
+      Value: {fileID: 21300000, guid: d1f5bc410a531414eae55d2417d55840, type: 3}
+    - Key: 13
+      Value: {fileID: 21300000, guid: 21d2b39d03a5cbd4cadb29c28b88f0fe, type: 3}
+    - Key: 14
+      Value: {fileID: 21300000, guid: 8417a61c61099044e854a63ead50622e, type: 3}
+    - Key: 15
+      Value: {fileID: 21300000, guid: 249ae404cdf749145bbf6e9b33e56d58, type: 3}
+    - Key: 16
+      Value: {fileID: 21300000, guid: f8168b1564ee18a49a4fdb9a2b20942d, type: 3}
+    - Key: 17
+      Value: {fileID: 21300000, guid: 333504ba774b1394895f17470bb051d1, type: 3}
+    - Key: 18
+      Value: {fileID: 21300000, guid: 9d14e4c3889a0c44f996d8dd3e87aae5, type: 3}
+    - Key: 19
+      Value: {fileID: 21300000, guid: a04b2d5b3bdf84e4a86f4d4422b0881d, type: 3}
+    - Key: 20
+      Value: {fileID: 21300000, guid: 997e88ccd1fa30d41982ee741ca042c6, type: 3}
+    - Key: 21
+      Value: {fileID: 21300000, guid: c54a93e70f04a1e4d9ee185020dc4ea7, type: 3}
+    - Key: 22
+      Value: {fileID: 21300000, guid: e7ec1aa589650f9478d2c5ae0c745755, type: 3}
+    - Key: 23
+      Value: {fileID: 21300000, guid: f259057cf1fdf1b4d9b71fa56ba0d021, type: 3}
+    - Key: 24
+      Value: {fileID: 21300000, guid: 73796ff2245c6dd4fabac6ffb2721201, type: 3}
+    - Key: 25
+      Value: {fileID: 21300000, guid: 822f99c92d0370e4291ededfce7f9ae3, type: 3}
+    - Key: 26
+      Value: {fileID: 21300000, guid: 369f4c90dd0dcb44d953034a175710b5, type: 3}
   LevelTasks:
     _serializedList:
     - Key: 0
       Value:
         _serializedList:
-        - Key: 6
+        - Key: 1
           Value: 2
-        - Key: 32
+        - Key: 2
+          Value: 2
+        - Key: 26
           Value: 2
     - Key: 1
       Value:
         _serializedList:
-        - Key: 32
+        - Key: 1
           Value: 4
   LevelStartMobs:
     _serializedList:
     - Key: 0
       Value:
         _serializedList:
-        - Key: 6
-          Value: 30
+        - Key: 0
+          Value: 100
     - Key: 1
       Value:
         _serializedList:

@@ -122,20 +122,36 @@ namespace Source.Scripts.Systems.Game
                             mergingObjects.Add(e);
                             
                         }
-
-                        
                         
                     }
                     
                     if (mergingObjects.Count >= 2)
                     {
+                        bool completed = false;
                         
                         for (int i = 0; i < 2; i++)
                         {
                             yield return new WaitForSeconds(0.25f);
                             
                             pool.Hoverable.Get(mergingObjects[i]).IsHovered = true;
-                            
+                            completed = true;
+                        }
+
+                        if (completed == false)
+                        {
+                            bonusView.Button.interactable = false;
+                        
+                            bonusView.Button.transform
+                                .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
+                                    randomness: 90, fadeOut: true)
+                                .OnComplete(() =>
+                                {
+                                    save.Money += bonusView.Cost;
+                                
+                                    pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+                                
+                                    bonusView.Button.interactable = true;
+                                });
                         }
                         
                         yield break;
@@ -155,7 +171,6 @@ namespace Source.Scripts.Systems.Game
                                 
                                 bonusView.Button.interactable = true;
                             });
-                        
                         
                         yield break;
                     }

@@ -151,12 +151,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3739047025526708829, guid: 971fca42fba899248a634bccc9fd1c46,
+        type: 3}
+      propertyPath: BlockAnim
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8237538297591678928, guid: 971fca42fba899248a634bccc9fd1c46,
         type: 3}
       propertyPath: m_Name
       value: Elder guardian Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2832063194700058386, guid: 971fca42fba899248a634bccc9fd1c46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 971fca42fba899248a634bccc9fd1c46, type: 3}
 --- !u!4 &3494357335571869269 stripped
 Transform:
