@@ -30,29 +30,33 @@ namespace Source.Scripts.Systems.Game
         public override void OnUpdate()
         {
             base.OnUpdate();
-            
+    
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-                
-                if (Physics.Raycast(ray, out var hit))
+                RaycastHit[] hits = Physics.RaycastAll(ray);
+
+                foreach (var hit in hits)
                 {
                     var baseView = hit.collider.GetComponent<BaseView>();
-                
+        
                     if (baseView != null && pool.Hoverable.Has(baseView.Entity))
                     {
                         ref var hoverable = ref pool.Hoverable.Get(baseView.Entity);
 
-                        if (hoverable.IsHovered == false && HoverIndex < MaxHoverIndex)
+                        if (!hoverable.IsHovered && HoverIndex < MaxHoverIndex)
                         {
                             hoverable.IsHovered = true;
                             HoverIndex++;
                         }
-                        else if (hoverable.IsHovered == true)
+                        else if (hoverable.IsHovered)
                         {
                             hoverable.IsHovered = false;
                             HoverIndex--;
                         }
+
+                        // Прерываем цикл, если нашли целевой объект (опционально)
+                        break;
                     }
                 }
             }
