@@ -112,7 +112,15 @@ namespace Source.Scripts.Systems.Game
                 if (task.Value > 0)
                 {
                     var mergingObjects = new List<int>();
-                    var mergeType = task.Key;
+
+                    MergeObjectType mergeType = task.Key;
+                    
+                    if (config.MergeLevels.Count - 1 != config.MergeLevels.IndexOf(task.Key))
+                    {
+                        mergeType = config.MergeLevels[config.MergeLevels.IndexOf(task.Key) - 1];
+                        Debug.Log($"Merge Type: {config.MergeLevels[config.MergeLevels.IndexOf(task.Key) - 1]}");
+                    }
+                   
                     
                     foreach (var e in filter)
                     {
