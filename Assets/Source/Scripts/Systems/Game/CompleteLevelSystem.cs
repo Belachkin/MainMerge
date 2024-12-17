@@ -36,6 +36,9 @@ namespace Source.Scripts.Systems.Game
                 }
                 
                 screen.ThisLevelText.text = save.CurrentLevel.ToString();
+                
+                pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.VictorySound;
+                
                 screen.ShowPanel();
             }
 

@@ -114,6 +114,8 @@ namespace Source.Scripts.Systems.Game
                     _particleSystem.transform.position = position;
                     _particleSystem.Play();
                     
+                    pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.MergeSound;
+                    
                     // UnityEngine.Object.Destroy(target.gameObject); 
                     pool.DeadTag.Add(entity);
                     UnityEngine.Debug.Log($"Объект {target.name} уничтожен.");

@@ -9,5 +9,11 @@ namespace Kuhpik
         public AudioClip Money;
         public AudioClip ClickSound;
         public AudioClip BuySound;
+        
+        public AudioClip VictorySound;
+        public AudioClip TaskCompleted;
+        
+        public AudioClip SelectSound;
+        public AudioClip MergeSound;
     }
 }

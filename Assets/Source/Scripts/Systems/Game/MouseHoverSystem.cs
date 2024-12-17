@@ -48,6 +48,9 @@ namespace Source.Scripts.Systems.Game
                         {
                             hoverable.IsHovered = true;
                             HoverIndex++;
+                            
+                            pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.SelectSound;
+                            
                         }
                         else if (hoverable.IsHovered)
                         {

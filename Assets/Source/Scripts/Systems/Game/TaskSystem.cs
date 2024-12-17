@@ -122,6 +122,9 @@ namespace Source.Scripts.Systems.Game
             
                 animateObject = img.gameObject;
                 screen.taskTexts[mergeObjectType].enabled = false;
+                
+                pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.TaskCompleted;
+                
             }
             else
             {
