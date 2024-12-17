@@ -158,15 +158,18 @@ MonoBehaviour:
       Value:
         _serializedList:
         - Key: 1
-          Value: 2
-        - Key: 2
-          Value: 2
-        - Key: 26
-          Value: 2
+          Value: 3
     - Key: 1
       Value:
         _serializedList:
         - Key: 1
+          Value: 3
+        - Key: 2
+          Value: 1
+    - Key: 2
+      Value:
+        _serializedList:
+        - Key: 3
           Value: 4
   LevelStartMobs:
     _serializedList:
@@ -174,11 +177,18 @@ MonoBehaviour:
       Value:
         _serializedList:
         - Key: 0
-          Value: 100
+          Value: 10
     - Key: 1
       Value:
         _serializedList:
-        - Key: 6
-          Value: 10
-        - Key: 32
+        - Key: 0
+          Value: 6
+        - Key: 1
           Value: 2
+    - Key: 2
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: 8
+        - Key: 1
+          Value: 4

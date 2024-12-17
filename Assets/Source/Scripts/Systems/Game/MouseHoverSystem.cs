@@ -54,8 +54,7 @@ namespace Source.Scripts.Systems.Game
                             hoverable.IsHovered = false;
                             HoverIndex--;
                         }
-
-                        // Прерываем цикл, если нашли целевой объект (опционально)
+                        
                         break;
                     }
                 }

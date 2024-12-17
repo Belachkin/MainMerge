@@ -63,6 +63,10 @@ namespace Source.Scripts.Systems.Game
                     RB.Value.isKinematic = false; 
                     RB.Value.useGravity = true;
                 }
+                else
+                {
+                    DOTween.Kill(RB.Value.transform);
+                }
             }
         }
     }

@@ -75,6 +75,24 @@ namespace Source.Scripts.Systems.Game
                         
                         return;
                     }
+                    else if(hover2.IsHovered && hover1.IsHovered && mergeType1.MergeType != mergeType2.MergeType)
+                    {
+                        hover1.IsHovered = false;
+                        hover2.IsHovered = false;
+                        //
+                        // // rb1.Value.isKinematic = false;
+                        // // rb2.Value.isKinematic = false;
+                        
+                        
+                        pool.ClearSelectedEvent.Add(eventWorld.NewEntity());
+
+                        // ApplyRepulsion(rb1.Value, rb2.Value);
+                        
+                        rb2.Value.AddForce(new Vector3(0f, 1f, 0f), ForceMode.Impulse);
+                        
+                        Debug.Log($"Объекты {rb1.Value.name} и {rb2.Value.name} не слились и разлетелись.");
+                        return;
+                    }
                 }
             }
 
@@ -121,5 +139,22 @@ namespace Source.Scripts.Systems.Game
                 });
         }
         
+        private void ApplyRepulsion(Rigidbody rb1, Rigidbody rb2)
+        {
+            // Направление отталкивания
+            Vector3 direction1 = (rb1.position - rb2.position).normalized;
+            Vector3 direction2 = -direction1;
+
+            // Сила отталкивания
+            float repulsionForce = 5f;
+
+            // Применяем силу к объектам
+            
+            
+            rb1.AddForce(direction1 * repulsionForce, ForceMode.Impulse);
+            rb2.AddForce(direction2 * repulsionForce, ForceMode.Impulse);
+            
+            
+        }
     }
 }
