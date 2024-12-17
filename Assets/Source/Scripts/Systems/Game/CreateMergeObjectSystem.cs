@@ -24,7 +24,11 @@ namespace Source.Scripts.Systems.Game
                 var newObjectType = pool.NewObjectEvent.Get(e);
 
                 var newObject = Instantiate(config.MergeObjects[newObjectType.MergeObjectType],
-                    newObjectType.Position, Quaternion.identity);
+                    newObjectType.Position, Quaternion.Euler(
+                        Random.Range(0, 360),
+                        Random.Range(0, 360),
+                        Random.Range(0, 360)
+                    ));
                 
                 var view = newObject.GetComponent<BaseView>();
                 
