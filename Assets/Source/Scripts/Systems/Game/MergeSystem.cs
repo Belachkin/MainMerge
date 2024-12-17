@@ -136,8 +136,10 @@ namespace Source.Scripts.Systems.Game
 
                         }
 
-                        pool.MergeEvent.Add(eventWorld.NewEntity()).MergeType = mergeType;
+                        // pool.MergeEvent.Add(eventWorld.NewEntity()).MergeType = mergeType;
                     }
+                    
+                    pool.MergeEvent.Add(eventWorld.NewEntity()).MergeType = mergeType;
                 });
         }
         

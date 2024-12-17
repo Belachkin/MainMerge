@@ -35,10 +35,10 @@ namespace Source.Scripts.Systems.Game
             {
                 ref var mergeType = ref pool.MergeEvent.Get(e).MergeType;
                 
-                if (config.MergeLevels.Count - 1 != config.MergeLevels.IndexOf(mergeType))
-                {
-                    mergeType = config.MergeLevels[config.MergeLevels.IndexOf(mergeType) + 1];
-                }
+                // if (config.MergeLevels.Count - 1 != config.MergeLevels.IndexOf(mergeType))
+                // {
+                //     mergeType = config.MergeLevels[config.MergeLevels.IndexOf(mergeType) + 1];
+                // }
                 
                 if (game.Tasks.ContainsKey(mergeType))
                 {
