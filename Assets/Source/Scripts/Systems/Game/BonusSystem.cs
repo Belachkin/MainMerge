@@ -24,6 +24,7 @@ namespace Source.Scripts.Systems.Game
         private Vector3 initialPosition; // Начальная позиция платформы
 
         private EcsFilter filter;
+        private bool isMistake = true;
         
         [SerializeField] private Transform container;
         
@@ -70,6 +71,11 @@ namespace Source.Scripts.Systems.Game
             {
                 return;
             }
+            
+            bonusView.Button.transform.DOScale(0.8f, 0.1f).OnComplete(() =>
+            {
+                bonusView.Button.transform.DOScale(1f, 0.1f);
+            });
             
             save.Money -= bonusView.Cost;
             pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
@@ -136,6 +142,8 @@ namespace Source.Scripts.Systems.Game
                     if (mergingObjects.Count >= 2)
                     {
                         bool completed = false;
+
+                        isMistake = true;
                         
                         for (int i = 0; i < 2; i++)
                         {
@@ -164,26 +172,32 @@ namespace Source.Scripts.Systems.Game
                         
                         yield break;
                     }
-                    else
-                    {
-                        bonusView.Button.interactable = false;
-                        
-                        bonusView.Button.transform
-                            .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
-                                randomness: 90, fadeOut: true)
-                            .OnComplete(() =>
-                            {
-                                save.Money += bonusView.Cost;
-                                
-                                pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
-                                
-                                bonusView.Button.interactable = true;
-                            });
-                        
-                        yield break;
-                    }
+                    
                     
                 }
+            }
+            
+            if(isMistake == true)
+            {
+                bonusView.Button.interactable = false;
+                        
+                bonusView.Button.transform
+                    .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
+                        randomness: 90, fadeOut: true)
+                    .OnComplete(() =>
+                    {
+                        save.Money += bonusView.Cost;
+                                
+                        pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+                                
+                        bonusView.Button.interactable = true;
+                    });
+                
+            }
+
+            if (isMistake == false)
+            {
+                isMistake = true;
             }
             
         }
