@@ -24,6 +24,7 @@ namespace Source.Scripts.Systems.EcsUtil
             AddFilter<StartLevelEvent>();
             AddFilter<AddMoneyEvent>();
             AddFilter<ClearSelectedEvent>();
+            AddFilter<FingerSetPositionEvent>();
         }
 
         private void AddFilter<T>() where T: struct

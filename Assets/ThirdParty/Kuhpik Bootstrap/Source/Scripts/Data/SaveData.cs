@@ -23,7 +23,7 @@ namespace Kuhpik
         public bool SoundOn = true;
         public LangType LangType;
 
-        public TutorStepType CurrentTutorStepType;
+        public TutorStepType CurrentTutorStepType = TutorStepType.MERGE;
 
         public int CurrentLevel = 0;
         public int MaxLevel = 10;

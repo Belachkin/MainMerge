@@ -24,6 +24,7 @@ namespace Source.Scripts.Systems.Game
         private Vector3 initialPosition; // Начальная позиция платформы
 
         private EcsFilter filter;
+        private EcsFilter rbFilter;
         private bool isMistake = true;
         
         [SerializeField] private Transform container;
@@ -35,6 +36,7 @@ namespace Source.Scripts.Systems.Game
             game.Tasks.Clear();
             
             filter = world.Filter<HoverableComponent>().Inc<MergeTypeComponent>().End();
+            rbFilter = world.Filter<RigidbodyComponent>().End();
             
             InitBonuses();
         }
@@ -97,11 +99,21 @@ namespace Source.Scripts.Systems.Game
         {
             // platform.DOShakePosition(shakeDuration, new Vector3(shakeStrength, 0, shakeStrength), vibrato, randomness: 90, snapping: false, fadeOut: true);
 
-            for (int i = container.childCount - 1; i >= 0; i--)
+            // for (int i = container.childCount - 1; i >= 0; i--)
+            // {
+            //     var child = container.GetChild(i);
+            //     child.DOShakePosition(shakeDuration, new Vector3(shakeStrength, 0, shakeStrength), vibrato,
+            //         randomness: 90, snapping: false, fadeOut: true);
+            // }
+
+            foreach (var e in rbFilter)
             {
-                var child = container.GetChild(i);
-                child.DOShakePosition(shakeDuration, new Vector3(shakeStrength, 0, shakeStrength), vibrato,
-                    randomness: 90, snapping: false, fadeOut: true);
+                var rb = pool.Rb.Get(e);
+                
+                float impulseMultiplier = 2.0f;
+                Vector3 impulse = new Vector3(Random.Range(-10, 10), Random.Range(0.1f, 0.5f), Random.Range(-10, 10)) * impulseMultiplier;
+                
+                rb.Value.AddForce(impulse, ForceMode.Impulse);
             }
         }
 
