@@ -3,14 +3,14 @@ using Kuhpik;
 using Leopotam.EcsLite;
 using Source.Scripts.Components.Events;
 using Source.Scripts.Data;
+using Source.Scripts.UI.Screens;
 using UnityEngine;
 
 namespace Source.Scripts.Systems.Game
 {
-    public class TutorialSystem : GameSystem
+    public class TutorialSystem : GameSystemWithScreen<TutorialUIScreen>
     {
         [SerializeField] private Canvas canvas;
-        [SerializeField] private GameObject finger;
         [SerializeField] private Transform bonusTransform;
         
         [SerializeField] private float scaleMultiplier = 1.2f; 
@@ -18,6 +18,7 @@ namespace Source.Scripts.Systems.Game
 
         [SerializeField] private Vector2 fingerOffset;
         
+        private GameObject finger;
         private Transform startTransform;
         private Sequence fingerSequence;
         private Camera mainCamera;
@@ -33,7 +34,7 @@ namespace Source.Scripts.Systems.Game
             filter = eventWorld.Filter<FingerSetPositionEvent>().End();
             
             mainCamera = Camera.main;
-            
+            finger = screen.finger;
             
             // fingerOffset = new Vector2(finger.transform.position.x + fingerOffset.x, finger.transform.position.y + fingerOffset.y);
             startTransform = finger.transform;
