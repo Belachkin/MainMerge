@@ -34,17 +34,19 @@ namespace Source.Scripts.Systems.Game
         public override void OnUpdate()
         {
             base.OnUpdate();
+            Vector3 fingerPosition = Vector3.zero;
 
+            // Устанавливаем позицию пальца в зависимости от текущего шага
             if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1)
             {
-                pool.FingerSetPositionEvent.Add(eventWorld.NewEntity()).Position = mergeOnjectsContainer.GetChild(0).position;
+                fingerPosition = mergeOnjectsContainer.GetChild(0).position;
             }
-            else if(save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_2)
+            else if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_2)
             {
-                pool.FingerSetPositionEvent.Add(eventWorld.NewEntity()).Position = mergeOnjectsContainer.GetChild(1).position;
+                fingerPosition = mergeOnjectsContainer.GetChild(1).position;
             }
-            
-            
+
+            // Проверяем нажатие мыши
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -53,41 +55,74 @@ namespace Source.Scripts.Systems.Game
                 foreach (var hit in hits)
                 {
                     var baseView = hit.collider.GetComponent<BaseView>();
-        
+
                     if (baseView != null && pool.Hoverable.Has(baseView.Entity))
                     {
                         ref var hoverable = ref pool.Hoverable.Get(baseView.Entity);
 
+                        // Проверяем, совпадает ли объект с ожидаемым
+                        bool isCorrectObject = false;
+
+                        if (save.CurrentTutorStepType == TutorStepType.MERGE_1)
+                        {
+                            isCorrectObject = baseView.transform == mergeOnjectsContainer.GetChild(0);
+                        }
+                        else if (save.CurrentTutorStepType == TutorStepType.MERGE_2)
+                        {
+                            isCorrectObject = baseView.transform == mergeOnjectsContainer.GetChild(1);
+                        }
+
                         if (!hoverable.IsHovered && HoverIndex < MaxHoverIndex)
                         {
+                            // Выделение корректного объекта
                             hoverable.IsHovered = true;
                             HoverIndex++;
 
-                            if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1)
+                            if (isCorrectObject)
                             {
-                                save.CurrentTutorStepType = TutorStepType.MERGE_2;
+                                if (save.CurrentTutorStepType == TutorStepType.MERGE_1)
+                                {
+                                    save.CurrentTutorStepType = TutorStepType.MERGE_2;
+                                }
+                                else if (save.CurrentTutorStepType == TutorStepType.MERGE_2)
+                                {
+                                    save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
+                                }
                             }
-                            else if(save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_2)
-                            {
-                                save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
-                            }
-                            
-                            pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.SelectSound;
-                            
                         }
                         else if (hoverable.IsHovered)
                         {
+                            // Снимаем выделение, если объект уже был выделен
                             hoverable.IsHovered = false;
                             HoverIndex--;
+
+                            fingerPosition = baseView.transform.position;
+
+                            if (save.CurrentTutorStepType == TutorStepType.MERGE_2 &&
+                                fingerPosition == mergeOnjectsContainer.GetChild(0).position)
+                            {
+                                save.CurrentTutorStepType = TutorStepType.MERGE_1;
+                            }
+                            else if(save.CurrentTutorStepType == TutorStepType.MERGE_1 && 
+                                    fingerPosition == mergeOnjectsContainer.GetChild(1).position)
+                            {
+                                save.CurrentTutorStepType = TutorStepType.MERGE_1;
+                            }
                         }
-                        
+
                         break;
                     }
                 }
             }
 
+            // Обновляем позицию пальца только при необходимости
+            if (save.CurrentTutorStepType == TutorStepType.MERGE_1 || save.CurrentTutorStepType == TutorStepType.MERGE_2)
+            {
+                pool.FingerSetPositionEvent.Add(eventWorld.NewEntity()).Position = fingerPosition;
+            }
+
             foreach (var e in filter)
-            {   
+            {
                 ClearAll();
             }
 
@@ -95,8 +130,6 @@ namespace Source.Scripts.Systems.Game
             {
                 ClearAll();
             }
-            
-            
         }
 
         public void ClearAll()

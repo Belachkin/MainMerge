@@ -24,7 +24,6 @@ namespace Source.Scripts.Systems.Game
         private Camera mainCamera;
         
         private EcsFilter filter;
-
         
         
         public override void OnInit()

@@ -103,15 +103,7 @@ namespace Source.Scripts.Systems.Game
 
         private void BonusShake()
         {
-            // platform.DOShakePosition(shakeDuration, new Vector3(shakeStrength, 0, shakeStrength), vibrato, randomness: 90, snapping: false, fadeOut: true);
-
-            // for (int i = container.childCount - 1; i >= 0; i--)
-            // {
-            //     var child = container.GetChild(i);
-            //     child.DOShakePosition(shakeDuration, new Vector3(shakeStrength, 0, shakeStrength), vibrato,
-            //         randomness: 90, snapping: false, fadeOut: true);
-            // }
-
+            
             foreach (var e in rbFilter)
             {
                 var rb = pool.Rb.Get(e);

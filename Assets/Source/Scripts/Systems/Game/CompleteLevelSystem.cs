@@ -41,6 +41,12 @@ namespace Source.Scripts.Systems.Game
                 pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.VictorySound;
                 
                 screen.ShowPanel();
+
+                if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1 ||
+                    save.CurrentTutorStepType == TutorStepType.MERGE_2)
+                {
+                    save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
+                }
             }
 
             foreach (var e in filter2)
