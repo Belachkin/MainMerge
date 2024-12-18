@@ -26,7 +26,12 @@ namespace Source.Scripts.Systems.Game
             foreach (var e in filter)
             {
                 int getMoney = 50 + Random.Range(0, 25);
-
+                
+                if (save.CurrentLevel == 0)
+                {
+                    getMoney = 100;
+                }
+                
                 save.Money += getMoney;
                 
                 screen.MoneyText.text = save.Money.ToString();

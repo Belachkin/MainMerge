@@ -2,6 +2,7 @@ using DG.Tweening;
 using Kuhpik;
 using Leopotam.EcsLite;
 using Source.Scripts.Components.Events;
+using Source.Scripts.Data;
 using Source.Scripts.UI.Screens;
 using UnityEngine;
 
@@ -53,6 +54,11 @@ namespace Source.Scripts.Systems.Game
         {
             screen.HidePanel();
             pool.StartLevelEvent.Add(eventWorld.NewEntity());
+
+            if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
+            {
+                save.CurrentTutorStepType = TutorStepType.BONUS;
+            }
         }
     }
 }

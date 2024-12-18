@@ -35,10 +35,15 @@ namespace Source.Scripts.Systems.Game
         {
             base.OnUpdate();
 
-            if (save.CurrentTutorStepType == TutorStepType.MERGE_1)
+            if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1)
             {
                 pool.FingerSetPositionEvent.Add(eventWorld.NewEntity()).Position = mergeOnjectsContainer.GetChild(0).position;
             }
+            else if(save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_2)
+            {
+                pool.FingerSetPositionEvent.Add(eventWorld.NewEntity()).Position = mergeOnjectsContainer.GetChild(1).position;
+            }
+            
             
             if (Input.GetMouseButtonDown(0))
             {
@@ -57,6 +62,15 @@ namespace Source.Scripts.Systems.Game
                         {
                             hoverable.IsHovered = true;
                             HoverIndex++;
+
+                            if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1)
+                            {
+                                save.CurrentTutorStepType = TutorStepType.MERGE_2;
+                            }
+                            else if(save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_2)
+                            {
+                                save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
+                            }
                             
                             pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.SelectSound;
                             

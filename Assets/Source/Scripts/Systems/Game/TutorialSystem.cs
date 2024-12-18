@@ -11,6 +11,7 @@ namespace Source.Scripts.Systems.Game
     {
         [SerializeField] private Canvas canvas;
         [SerializeField] private GameObject finger;
+        [SerializeField] private Transform bonusTransform;
         
         [SerializeField] private float scaleMultiplier = 1.2f; 
         [SerializeField] private float animationDuration = 0.5f;
@@ -44,6 +45,7 @@ namespace Source.Scripts.Systems.Game
                 FingerAnimation();
             }
             
+            
         }
 
         public override void OnUpdate()
@@ -54,7 +56,7 @@ namespace Source.Scripts.Systems.Game
             {
                 var newPosition = pool.FingerSetPositionEvent.Get(e).Position;
                 
-                FingerSetPosition(newPosition);
+                FingerSetPositionRegardingWorld(newPosition);
             }
 
             if (save.CurrentTutorStepType == TutorStepType.DONE)
@@ -62,10 +64,23 @@ namespace Source.Scripts.Systems.Game
                 fingerSequence.Kill();
                 finger.gameObject.SetActive(false);
             }
+            else if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
+            {
+                finger.gameObject.SetActive(false);
+            }
+            else if(save.CurrentTutorStepType == TutorStepType.BONUS)
+            {
+                finger.transform.position = bonusTransform.position + (Vector3)fingerOffset;
+                finger.gameObject.SetActive(true);
+            }
+            else if(finger.activeSelf == false)
+            {
+                finger.gameObject.SetActive(true);
+            }
             
         }
         
-        public void FingerSetPosition(Vector3 targetPosition)
+        public void FingerSetPositionRegardingWorld(Vector3 targetPosition)
         {
             Vector3 screenPosition = mainCamera.WorldToScreenPoint(targetPosition);
             

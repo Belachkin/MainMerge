@@ -5987,6 +5987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1265134294}
   finger: {fileID: 1307912953}
+  bonusTransform: {fileID: 1547429178}
   scaleMultiplier: 1.2
   animationDuration: 0.5
   fingerOffset: {x: 75, y: -75}

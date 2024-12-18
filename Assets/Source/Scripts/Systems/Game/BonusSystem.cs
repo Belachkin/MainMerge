@@ -88,6 +88,12 @@ namespace Source.Scripts.Systems.Game
             {
                 case BonusType.AutoMerge:
                     StartCoroutine(AutoMerge(bonusView));
+
+                    if (save.CurrentTutorStepType == TutorStepType.BONUS)
+                    {
+                        save.CurrentTutorStepType = TutorStepType.DONE;
+                    }
+                    
                     break;
                 case BonusType.Shake:
                     BonusShake();
