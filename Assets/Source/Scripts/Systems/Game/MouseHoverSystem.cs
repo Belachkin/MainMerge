@@ -2,6 +2,7 @@ using Kuhpik;
 using Leopotam.EcsLite;
 using Source.Scripts.Components;
 using Source.Scripts.Components.Events;
+using Source.Scripts.Data;
 using Source.Scripts.View;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ namespace Source.Scripts.Systems.Game
         private EcsFilter filterHovebles;
         private int HoverIndex = 0;
         private Camera camera;
+        
+        [SerializeField] private Transform mergeOnjectsContainer;
+        
         public override void OnInit()
         {
             base.OnInit();
@@ -30,7 +34,12 @@ namespace Source.Scripts.Systems.Game
         public override void OnUpdate()
         {
             base.OnUpdate();
-    
+
+            if (save.CurrentTutorStepType == TutorStepType.MERGE_1)
+            {
+                pool.FingerSetPositionEvent.Add(eventWorld.NewEntity()).Position = mergeOnjectsContainer.GetChild(0).position;
+            }
+            
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);

@@ -2948,6 +2948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4b0a1831cf4f179927b94a73eee454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mergeOnjectsContainer: {fileID: 1201280257}
 --- !u!1 &674819047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,7 +4025,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2035646351}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1171188355
 MonoBehaviour:
@@ -4396,6 +4397,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!223 &1265134294 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2812976811259124011, guid: 7c59469aae2288b4a9454662a7f79fe3,
+    type: 3}
+  m_PrefabInstance: {fileID: 303719808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297827315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4434,7 +4441,7 @@ Transform:
   - {fileID: 31472922}
   - {fileID: 26858762}
   m_Father: {fileID: 2035646351}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1297827317
 MonoBehaviour:
@@ -4976,7 +4983,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2035646351}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1397424494
 MonoBehaviour:
@@ -5532,7 +5539,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2035646351}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1503704485
 MonoBehaviour:
@@ -5920,7 +5927,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2035646351}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1627446508
 MonoBehaviour:
@@ -5964,7 +5971,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2035646351}
-  m_RootOrder: 19
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1721096143
 MonoBehaviour:
@@ -5978,9 +5985,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a0138c8d974057ad9350ee04aa368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1265134294}
   finger: {fileID: 1307912953}
   scaleMultiplier: 1.2
   animationDuration: 0.5
+  fingerOffset: {x: 75, y: -75}
 --- !u!1 &1796442357
 GameObject:
   m_ObjectHideFlags: 0
@@ -6677,12 +6686,12 @@ Transform:
   - {fileID: 2031715238}
   - {fileID: 674819048}
   - {fileID: 1895264153}
+  - {fileID: 1721096142}
   - {fileID: 1297827316}
   - {fileID: 1397424493}
   - {fileID: 1627446507}
   - {fileID: 1503704484}
   - {fileID: 1171188354}
-  - {fileID: 1721096142}
   m_Father: {fileID: 23744416}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -2,7 +2,8 @@
 {
     public enum TutorStepType
     {
-        MERGE,
+        MERGE_1,
+        MERGE_2,
         BONUS,
         DONE
     }

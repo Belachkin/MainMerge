@@ -24,8 +24,7 @@ namespace Source.Scripts.Systems.Game
         public override void OnUpdate()
         {
             base.OnUpdate();
-
-            // Перебираем все сущности в фильтре
+            
             foreach (var e1 in filter)
             {
                 ref var hover1 = ref pool.Hoverable.Get(e1);
@@ -88,6 +87,7 @@ namespace Source.Scripts.Systems.Game
 
                         // ApplyRepulsion(rb1.Value, rb2.Value);
                         
+                        //TODO: Допилить
                         rb2.Value.AddForce(new Vector3(0f, 1f, 0f), ForceMode.Impulse);
                         
                         Debug.Log($"Объекты {rb1.Value.name} и {rb2.Value.name} не слились и разлетелись.");
