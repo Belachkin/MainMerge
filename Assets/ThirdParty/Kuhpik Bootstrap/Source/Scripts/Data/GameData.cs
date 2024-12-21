@@ -30,5 +30,7 @@ namespace Kuhpik
         public AnimManager AnimManager;
         
         public SerializedDictionary<MergeObjectType, int> Tasks = new SerializedDictionary<MergeObjectType, int>();
+        public MergeStateType MergeState;
+        
     }
 }
