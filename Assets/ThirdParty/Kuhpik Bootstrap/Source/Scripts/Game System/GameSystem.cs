@@ -11,7 +11,7 @@ namespace Kuhpik
         protected GameData game;
         protected GameConfig config;
         protected AudioConfig audioConfig;
-
+        
         protected EcsWorld world => game.World;
         protected EcsWorld eventWorld => game.EventWorld;
         protected Pools pool => game.Pools;

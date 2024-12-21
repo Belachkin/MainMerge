@@ -10,6 +10,7 @@ using Source.Scripts.Data;
 using Source.Scripts.SDK;
 using Source.Scripts.UI.Screens;
 using Source.Scripts.View;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -18,11 +19,19 @@ namespace Source.Scripts.Systems.Game
 {
     public class BonusSystem : GameSystemWithScreen<BonusUIScreen>
     {
-        [Header("Bonus Shake")]
+        
         [SerializeField] private Transform  platform; // Ссылка на платформу
         [SerializeField] private float shakeDuration = 1f; // Длительность шейка
         [SerializeField] private float shakeStrength = 1f; // Сила шейка
         [SerializeField] private int vibrato = 10; // Частота вибрации
+
+        [Header("Bonus Shake")] 
+        [SerializeField] private GameObject TNTPrefab;
+        [SerializeField] private Vector3 spawnPosition = Vector3.zero;
+        [SerializeField] private Material baseMaterial;
+        [SerializeField] private Material whiteMaterial;
+        [SerializeField] private ParticleSystem explosionParticle;
+        [Space(5)]
         
         private Vector3 initialPosition; // Начальная позиция платформы
 
@@ -110,23 +119,62 @@ namespace Source.Scripts.Systems.Game
                     
                     break;
                 case BonusType.Shake:
-                    BonusShake();
+                    StartCoroutine(BonusShake());
                     break;
             }
         }
 
-        private void BonusShake()
+        private IEnumerator BonusShake()
         {
+
+            var TNT = Instantiate(TNTPrefab, spawnPosition, Quaternion.identity);
+            var TNT_Mesh = TNT.GetComponent<MeshRenderer>();
+            
+            
+            pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.TNTActivation;
+
+            float seconds = 0;
+
+            while (seconds < 1.5f)
+            {
+                TNT_Mesh.material = baseMaterial;
+                yield return new WaitForSeconds(0.125f);
+                TNT_Mesh.material = whiteMaterial;
+                yield return new WaitForSeconds(0.125f);
+                seconds += 0.25f;
+            }
+            
+            // yield return new WaitForSeconds(1.5f);
+            
+            Vector3 explosionPosition = new Vector3(TNT.transform.position.x, 
+                                                    TNT.transform.position.y, 
+                                                    TNT.transform.position.z);
+            Destroy(TNT);
+            
+            var particle = Instantiate(explosionParticle.gameObject, explosionPosition, Quaternion.identity);
+            
+            
+            pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.TNTExplosion;
             
             foreach (var e in rbFilter)
             {
                 var rb = pool.Rb.Get(e);
                 
-                float impulseMultiplier = 2.0f;
-                Vector3 impulse = new Vector3(Random.Range(-10, 10), Random.Range(0.1f, 0.5f), Random.Range(-10, 10)) * impulseMultiplier;
+                Vector3 direction = (rb.Value.position - explosionPosition).normalized;
+                
+                float impulseMultiplier = 20.0f;
+                Vector3 randomOffset = new Vector3(
+                    Random.Range(-1f, 1f),
+                    Random.Range(-1f, 1f),
+                    Random.Range(-1f, 1f)
+                );
+                
+                Vector3 impulse = (direction + randomOffset).normalized * impulseMultiplier;
                 
                 rb.Value.AddForce(impulse, ForceMode.Impulse);
             }
+            yield return new WaitForSeconds(1.5f);
+            Destroy(particle);
         }
 
         private IEnumerator AutoMerge(BonusView bonusView)

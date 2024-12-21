@@ -15,5 +15,9 @@ namespace Kuhpik
         
         public AudioClip SelectSound;
         public AudioClip MergeSound;
+
+        [Header("TNT")] 
+        public AudioClip TNTActivation;
+        public AudioClip TNTExplosion;
     }
 }
