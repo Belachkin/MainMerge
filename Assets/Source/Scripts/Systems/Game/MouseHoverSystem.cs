@@ -45,9 +45,9 @@ namespace Source.Scripts.Systems.Game
             {
                 fingerPosition = mergeOnjectsContainer.GetChild(1).position;
             }
-
+            
             // Проверяем нажатие мыши
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && save.CurrentTutorStepType != TutorStepType.BONUS)
             {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit[] hits = Physics.RaycastAll(ray);

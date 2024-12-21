@@ -65,6 +65,8 @@ MonoBehaviour:
           Value: Next level
         - Key: 18
           Value: 'Level:'
+        - Key: 19
+          Value: There are not enough coins
     - Key: 0
       Value:
         _serializedList:
@@ -110,3 +112,5 @@ MonoBehaviour:
           Value: "\u0414\u0430\u043B\u0435\u0435"
         - Key: 18
           Value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C:"
+        - Key: 19
+          Value: "\u043D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u043C\u043E\u043D\u0435\u0442"

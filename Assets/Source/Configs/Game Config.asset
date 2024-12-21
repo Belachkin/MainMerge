@@ -185,6 +185,6 @@ MonoBehaviour:
       Value:
         _serializedList:
         - Key: 0
-          Value: 8
+          Value: 40
         - Key: 1
-          Value: 4
+          Value: 10

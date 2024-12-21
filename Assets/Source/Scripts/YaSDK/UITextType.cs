@@ -23,6 +23,7 @@
         SHOP,
         VICTORY,
         NEXT_LEVEL,
-        LEVEL
+        LEVEL,
+        REWARD_MONEY_PANEL
     }
 }

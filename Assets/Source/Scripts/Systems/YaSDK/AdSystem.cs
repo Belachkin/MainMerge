@@ -10,13 +10,17 @@ using UnityEngine;
 
 namespace Source.Scripts.Systems.Game
 {
-    public class AdSystem : GameSystem/*WithScreen<RewardedADUIScreen>*/
+    public class AdSystem : GameSystem
     {
-        [SerializeField] private float rewardCd=30;
-        [SerializeField] private float interCd=60;
+        [SerializeField] private float rewardCd=60;
+        [SerializeField] private float interCd=180;
         
         private EcsFilter filter;
         private InterAdUIScreen interAdUIScreen;
+        private RateUsUIScreen rateScreen;
+        private AuthUIScreen authScreen;
+        
+        
         private Coroutine coroutineReward;
         private Coroutine coroutineInter;
         private bool interTimerReady;
@@ -26,31 +30,15 @@ namespace Source.Scripts.Systems.Game
             base.OnInit();
             filter = eventWorld.Filter<SDKEvent>().End();
             interAdUIScreen = FindObjectOfType<InterAdUIScreen>(true);
-            //screen.AdButton.onClick.AddListener(OnShowReward);
+            rateScreen = FindObjectOfType<RateUsUIScreen>(true);
+            authScreen = FindObjectOfType<AuthUIScreen>(true);
             
             YandexManager.Instance.InterClosedEvent += OnInterClosed;
-            
-            //screen.Toggle(false);
-            coroutineReward = StartCoroutine(RewardCd());
             
             coroutineInter = StartCoroutine(InterCd());
         }
 
-        public override void OnUpdate()
-        {
-            base.OnUpdate();
-            foreach (var e in filter)
-            {
-                if (pool.SDKEvent.Get(e).SdkEventType==SdkEventType.INTER  //is inter event
-                    && interTimerReady                                     //timer ready
-                    && (!game.WantToAskReviewNow))  //there will not be rate us screen
-                {
-                    //StartCoroutine(StartPreInterPause(2f)); //2f is required by sdk!
-                    StartCoroutine(CoroutineManager.WaitThenPerform(0.1f, YandexManager.Instance.ShowInter));
-                }
-            }
-        }
-
+        
         private IEnumerator StartPreInterPause(float delay)
         {
             interAdUIScreen.Open();
@@ -62,7 +50,7 @@ namespace Source.Scripts.Systems.Game
         private void OnInterClosed()
         {
             coroutineInter = StartCoroutine(InterCd());
-            //interAdUIScreen.Close();
+            interAdUIScreen.Close();
         }
 
         private IEnumerator InterCd()
@@ -70,19 +58,14 @@ namespace Source.Scripts.Systems.Game
             interTimerReady = false;
             yield return new WaitForSeconds(interCd);
             interTimerReady = true;
-        }
-
-        private void OnShowReward()
-        {
-            //screen.Toggle(false);
-            YandexManager.Instance.ShowRewardedAd();
-            coroutineReward = StartCoroutine(RewardCd());
-        }
-
-        private IEnumerator RewardCd()
-        {
-            yield return new WaitForSeconds(rewardCd);
-            //screen.Toggle(true);
+            if (interTimerReady && (!game.WantToAskReviewNow) && !rateScreen.gameObject.activeSelf && !authScreen.gameObject.activeSelf)
+            {
+                StartCoroutine(StartPreInterPause(2f));
+            }
+            else
+            {
+                coroutineInter= StartCoroutine(InterCd());
+            }
         }
     }
 }

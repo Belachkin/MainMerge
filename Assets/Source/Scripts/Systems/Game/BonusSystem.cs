@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,10 +7,12 @@ using Leopotam.EcsLite;
 using Source.Scripts.Components;
 using Source.Scripts.Components.View;
 using Source.Scripts.Data;
+using Source.Scripts.SDK;
 using Source.Scripts.UI.Screens;
 using Source.Scripts.View;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Source.Scripts.Systems.Game
 {
@@ -28,15 +31,30 @@ namespace Source.Scripts.Systems.Game
         private bool isMistake = true;
         
         [SerializeField] private Transform container;
-        
+
+        // private void OnEnable()
+        // {
+        //     
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     YandexManager.Instance.RewardClaimEvent -= HideRewPanel;
+        // }
+
         public override void OnInit()
         {
             base.OnInit();
+            
+            YandexManager.Instance.RewardClaimEvent += HideRewPanel;
             
             game.Tasks.Clear();
             
             filter = world.Filter<HoverableComponent>().Inc<MergeTypeComponent>().End();
             rbFilter = world.Filter<RigidbodyComponent>().End();
+
+             screen.CloseButton.onClick.AddListener(() => {screen.HidePanel();});
+             screen.RewardButton.onClick.AddListener(() => { YandexManager.Instance.ShowRewardedAd(); });
             
             InitBonuses();
         }
@@ -44,16 +62,25 @@ namespace Source.Scripts.Systems.Game
         public override void OnUpdate()
         {
             base.OnUpdate();
-
+        
             foreach (var bonusView in screen.BonusViews)
             {
-                if (save.Money - bonusView.Cost < 0)
+                if (save.CurrentTutorStepType == TutorStepType.MERGE_1 || 
+                    save.CurrentTutorStepType == TutorStepType.MERGE_2 || 
+                    save.CurrentTutorStepType == TutorStepType.MERGE_3 || 
+                    save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
                 {
                     bonusView.Button.interactable = false;
                 }
                 else
                 {
                     bonusView.Button.interactable = true;
+                }
+
+                if (bonusView.BonusType == BonusType.Shake && 
+                    save.CurrentTutorStepType != TutorStepType.DONE)
+                {
+                    bonusView.Button.interactable = false;
                 }
             }
         }
@@ -71,6 +98,7 @@ namespace Source.Scripts.Systems.Game
         {
             if (save.Money - bonusView.Cost < 0)
             {
+                ShowRewPanel();
                 return;
             }
             
@@ -211,6 +239,20 @@ namespace Source.Scripts.Systems.Game
             }
             
         }
+
+        private void ShowRewPanel()
+        {
+            screen.ShowPanel();
+        }
+
+        private void HideRewPanel()
+        {
+            screen.HidePanel();
+            save.Money += 300;
+            
+            pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+        }
+        
     }
     
     
