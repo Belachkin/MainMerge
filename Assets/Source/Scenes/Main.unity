@@ -1227,7 +1227,7 @@ MonoBehaviour:
   CloseButton: {fileID: 1345797337}
   RewardPanel: {fileID: 1917575947}
   CanvasGroup: {fileID: 1917575951}
-  windowShowDuration: 2
+  windowShowDuration: 0.5
   particlesShowDuration: 1
 --- !u!1 &143206683
 GameObject:

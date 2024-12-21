@@ -20,18 +20,14 @@ namespace Source.Scripts.UI.Screens
         
         public CanvasGroup CanvasGroup; 
         public float windowShowDuration = 2f; 
-        public float particlesShowDuration = 1f; 
         
         public void ShowPanel()
         {
-            
             Sequence sequence = DOTween.Sequence();
             RewardPanel.transform.localScale = Vector3.zero;
             
             sequence.Append(CanvasGroup.DOFade(1f, windowShowDuration)).OnStart(() => RewardPanel.SetActive(true))
                 .Join(RewardPanel.transform.DOScale(Vector3.one, windowShowDuration).SetEase(Ease.OutBack)); 
-            
-
         }
 
         public void HidePanel()

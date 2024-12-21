@@ -31,17 +31,7 @@ namespace Source.Scripts.Systems.Game
         private bool isMistake = true;
         
         [SerializeField] private Transform container;
-
-        // private void OnEnable()
-        // {
-        //     
-        // }
-        //
-        // private void OnDisable()
-        // {
-        //     YandexManager.Instance.RewardClaimEvent -= HideRewPanel;
-        // }
-
+        
         public override void OnInit()
         {
             base.OnInit();
@@ -65,33 +55,6 @@ namespace Source.Scripts.Systems.Game
         
             foreach (var bonusView in screen.BonusViews)
             {
-                // if (save.CurrentTutorStepType == TutorStepType.MERGE_1 || 
-                //     save.CurrentTutorStepType == TutorStepType.MERGE_2 || 
-                //     save.CurrentTutorStepType == TutorStepType.MERGE_3 || 
-                //     save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
-                // {
-                //     bonusView.Button.interactable = false;
-                // }
-                // else
-                // {
-                //     bonusView.Button.interactable = true;
-                // }
-                //
-                // if (bonusView.BonusType == BonusType.Shake && 
-                //     save.CurrentTutorStepType != TutorStepType.DONE)
-                // {
-                //     bonusView.Button.interactable = false;
-                // }
-                //
-                // if (game.MergeState == MergeStateType.MergeLock)
-                // {
-                //     bonusView.Button.interactable = false;
-                // }
-                // else
-                // {
-                //     bonusView.Button.interactable = true;
-                // }
-
                 if (save.CurrentTutorStepType == TutorStepType.MERGE_1 ||
                     save.CurrentTutorStepType == TutorStepType.MERGE_2 ||
                     save.CurrentTutorStepType == TutorStepType.MERGE_3 ||
