@@ -53,7 +53,7 @@ namespace Source.Scripts.Systems.Game
             filter = world.Filter<HoverableComponent>().Inc<MergeTypeComponent>().End();
             rbFilter = world.Filter<RigidbodyComponent>().End();
 
-             screen.CloseButton.onClick.AddListener(() => {screen.HidePanel();});
+             screen.CloseButton.onClick.AddListener(() => {screen.HidePanel(); game.MergeState = MergeStateType.Merge;});
              screen.RewardButton.onClick.AddListener(() => { YandexManager.Instance.ShowRewardedAd(); });
             
             InitBonuses();
@@ -65,22 +65,45 @@ namespace Source.Scripts.Systems.Game
         
             foreach (var bonusView in screen.BonusViews)
             {
-                if (save.CurrentTutorStepType == TutorStepType.MERGE_1 || 
-                    save.CurrentTutorStepType == TutorStepType.MERGE_2 || 
-                    save.CurrentTutorStepType == TutorStepType.MERGE_3 || 
-                    save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
+                // if (save.CurrentTutorStepType == TutorStepType.MERGE_1 || 
+                //     save.CurrentTutorStepType == TutorStepType.MERGE_2 || 
+                //     save.CurrentTutorStepType == TutorStepType.MERGE_3 || 
+                //     save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
+                // {
+                //     bonusView.Button.interactable = false;
+                // }
+                // else
+                // {
+                //     bonusView.Button.interactable = true;
+                // }
+                //
+                // if (bonusView.BonusType == BonusType.Shake && 
+                //     save.CurrentTutorStepType != TutorStepType.DONE)
+                // {
+                //     bonusView.Button.interactable = false;
+                // }
+                //
+                // if (game.MergeState == MergeStateType.MergeLock)
+                // {
+                //     bonusView.Button.interactable = false;
+                // }
+                // else
+                // {
+                //     bonusView.Button.interactable = true;
+                // }
+
+                if (save.CurrentTutorStepType == TutorStepType.MERGE_1 ||
+                    save.CurrentTutorStepType == TutorStepType.MERGE_2 ||
+                    save.CurrentTutorStepType == TutorStepType.MERGE_3 ||
+                    save.CurrentTutorStepType == TutorStepType.WAIT_BONUS ||
+                    (bonusView.BonusType == BonusType.Shake && save.CurrentTutorStepType != TutorStepType.DONE) ||
+                    game.MergeState == MergeStateType.MergeLock)
                 {
                     bonusView.Button.interactable = false;
                 }
                 else
                 {
                     bonusView.Button.interactable = true;
-                }
-
-                if (bonusView.BonusType == BonusType.Shake && 
-                    save.CurrentTutorStepType != TutorStepType.DONE)
-                {
-                    bonusView.Button.interactable = false;
                 }
             }
         }
@@ -242,6 +265,7 @@ namespace Source.Scripts.Systems.Game
 
         private void ShowRewPanel()
         {
+            game.MergeState = MergeStateType.MergeLock;
             screen.ShowPanel();
         }
 
@@ -251,6 +275,8 @@ namespace Source.Scripts.Systems.Game
             save.Money += 300;
             
             pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+            
+            game.MergeState = MergeStateType.Merge;
         }
         
     }

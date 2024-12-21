@@ -47,7 +47,7 @@ namespace Source.Scripts.Systems.Game
             }
             
             // Проверяем нажатие мыши
-            if (Input.GetMouseButtonDown(0) && save.CurrentTutorStepType != TutorStepType.BONUS)
+            if (Input.GetMouseButtonDown(0) && save.CurrentTutorStepType != TutorStepType.BONUS && game.MergeState == MergeStateType.Merge)
             {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit[] hits = Physics.RaycastAll(ray);

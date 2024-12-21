@@ -5,6 +5,7 @@ using Leopotam.EcsLite;
 using Source.Scripts.Components;
 using Source.Scripts.Components.Events;
 using Source.Scripts.Components.View;
+using Source.Scripts.Data;
 using Source.Scripts.View;
 using UnityEngine;
 
@@ -76,6 +77,8 @@ namespace Source.Scripts.Systems.Game
         
         private IEnumerator SpawnWithDelay()
         {
+            game.MergeState = MergeStateType.MergeLock;
+            
             foreach (var obj in config.LevelStartMobs[save.CurrentLevel])
             {
                 int totalToSpawn = obj.Value;
@@ -132,8 +135,10 @@ namespace Source.Scripts.Systems.Game
                 var view = obj.GetComponent<BaseView>();
                 game.Fabric.InitView(view);
             }
-
+                
             _levelObjects.Clear();
+            
+            game.MergeState = MergeStateType.Merge;
         }
 
         private void ClearChildren()
