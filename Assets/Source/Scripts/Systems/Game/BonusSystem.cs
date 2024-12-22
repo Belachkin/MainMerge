@@ -38,12 +38,14 @@ namespace Source.Scripts.Systems.Game
         private EcsFilter filter;
         private EcsFilter rbFilter;
         private bool isMistake = true;
+        private Camera camera;
         
         [SerializeField] private Transform container;
         
         public override void OnInit()
         {
             base.OnInit();
+            camera = Camera.main;
             
             YandexManager.Instance.RewardClaimEvent += HideRewPanel;
             
@@ -52,8 +54,8 @@ namespace Source.Scripts.Systems.Game
             filter = world.Filter<HoverableComponent>().Inc<MergeTypeComponent>().End();
             rbFilter = world.Filter<RigidbodyComponent>().End();
 
-             screen.CloseButton.onClick.AddListener(() => {screen.HidePanel(); game.MergeState = MergeStateType.Merge;});
-             screen.RewardButton.onClick.AddListener(() => { YandexManager.Instance.ShowRewardedAd(); });
+            screen.CloseButton.onClick.AddListener(() => {screen.HidePanel(); game.MergeState = MergeStateType.Merge;});
+            screen.RewardButton.onClick.AddListener(() => { YandexManager.Instance.ShowRewardedAd(); });
             
             InitBonuses();
         }
@@ -120,6 +122,7 @@ namespace Source.Scripts.Systems.Game
                     break;
                 case BonusType.Shake:
                     StartCoroutine(BonusShake());
+                    ShowFloatingText(bonusView);
                     break;
             }
         }
@@ -241,6 +244,10 @@ namespace Source.Scripts.Systems.Game
                                     bonusView.Button.interactable = true;
                                 });
                         }
+                        else
+                        {
+                            ShowFloatingText(bonusView);
+                        }
                         
                         yield break;
                     }
@@ -261,8 +268,9 @@ namespace Source.Scripts.Systems.Game
                         save.Money += bonusView.Cost;
                                 
                         pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
-                                
+                        
                         bonusView.Button.interactable = true;
+                        
                     });
                 
             }
@@ -289,7 +297,17 @@ namespace Source.Scripts.Systems.Game
             
             game.MergeState = MergeStateType.Merge;
         }
-        
+
+        private void ShowFloatingText(BonusView bonusView)
+        {
+            Debug.Log("Show");
+            var floatingEntity = eventWorld.NewEntity();
+            ref var floatingEvent = ref pool.FloatingTextEvent.Add(floatingEntity);
+
+            floatingEvent.position = Input.mousePosition;
+            floatingEvent.text = $"-{bonusView.Cost.ToString()}";
+            floatingEvent.color = Color.red;
+        }
     }
     
     

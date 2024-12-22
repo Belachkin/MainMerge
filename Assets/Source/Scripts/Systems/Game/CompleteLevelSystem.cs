@@ -27,6 +27,9 @@ namespace Source.Scripts.Systems.Game
 
             foreach (var e in filter)
             {
+
+                game.MergeState = MergeStateType.MergeLock;
+                
                 if (save.CurrentLevel < save.MaxLevel)
                 {
                     save.CurrentLevel++;
@@ -41,12 +44,16 @@ namespace Source.Scripts.Systems.Game
                 pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.VictorySound;
                 
                 screen.ShowPanel();
+                
+                screen.ThisLevelText.text = save.CurrentLevel.ToString();
 
                 if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1 ||
                     save.CurrentTutorStepType == TutorStepType.MERGE_2)
                 {
                     save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
                 }
+                
+                Debug.Log(save.CurrentLevel);
             }
 
             foreach (var e in filter2)
@@ -65,6 +72,8 @@ namespace Source.Scripts.Systems.Game
             {
                 save.CurrentTutorStepType = TutorStepType.BONUS;
             }
+            
+            game.MergeState = MergeStateType.Merge;
         }
     }
 }

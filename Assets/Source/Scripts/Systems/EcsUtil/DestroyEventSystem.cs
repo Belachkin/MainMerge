@@ -25,6 +25,7 @@ namespace Source.Scripts.Systems.EcsUtil
             AddFilter<AddMoneyEvent>();
             AddFilter<ClearSelectedEvent>();
             AddFilter<FingerSetPositionEvent>();
+            AddFilter<FloatingTextEvent>();
         }
 
         private void AddFilter<T>() where T: struct

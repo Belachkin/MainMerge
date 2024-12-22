@@ -39,6 +39,7 @@ namespace Source.Scripts.EcsUtil
         public readonly EcsPool<UpdateMoneyEvent> UpdateMoneyEvent;
         public readonly EcsPool<ClearSelectedEvent> ClearSelectedEvent;
         public readonly EcsPool<FingerSetPositionEvent> FingerSetPositionEvent;
+        public readonly EcsPool<FloatingTextEvent> FloatingTextEvent;
         public Pools(EcsWorld world, EcsWorld eventWorld)
         {
             this.eventWorld = eventWorld;
@@ -69,6 +70,7 @@ namespace Source.Scripts.EcsUtil
             UpdateMoneyEvent = eventWorld.GetPool<UpdateMoneyEvent>();
             ClearSelectedEvent = eventWorld.GetPool<ClearSelectedEvent>();
             FingerSetPositionEvent = eventWorld.GetPool<FingerSetPositionEvent>();
+            FloatingTextEvent = eventWorld.GetPool<FloatingTextEvent>();
         }
         
         public void Save()
