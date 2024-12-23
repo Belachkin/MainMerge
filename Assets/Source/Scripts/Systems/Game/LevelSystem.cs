@@ -126,7 +126,7 @@ namespace Source.Scripts.Systems.Game
                     }
 
                     spawned += spawnThisBatch;
-                    yield return new WaitForSeconds(0.25f); // Ожидание перед следующим "пакетом"
+                    yield return new WaitForSeconds(0.05f); // Ожидание перед следующим "пакетом"
                 }
             }
 
