@@ -292,7 +292,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider jockey Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2832063194700058386, guid: 971fca42fba899248a634bccc9fd1c46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 971fca42fba899248a634bccc9fd1c46, type: 3}
 --- !u!4 &5647131817310239749 stripped
 Transform:

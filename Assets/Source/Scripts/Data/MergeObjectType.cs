@@ -5,7 +5,7 @@ namespace Source.Scripts.Data
         
         CHICKEN, 
         PIG, 
-        HOGLIN,
+        SHEEP, //NEW + + +
         COW, 
         AGARIC_COW,
         GOAT, 
@@ -13,22 +13,36 @@ namespace Source.Scripts.Data
         WOLF, 
         FOX,
         CAT,
+        
         PARROT,
         BEE, 
+        BAT, //NEW + + +
         PHANTOM,
+        
         SALMON, 
         PUFFER_FISH,
         FROG,
         AXOLOTL, 
         TURTLE, 
-        DOLPHIN, 
         SQUID,
-        CREEPER,
-        SNOW_GOLEM, 
-        GHAST,
+        DOLPHIN, 
+        ELDER_GUARDIAN, //NEW + + +
+        
+        ZOMBIE, //NEW + + +
+        SKILLET, //NEW + + +
         SPIDER, 
+        SPIDER_SKILLET, //NEW + + +
+        CREEPER,
+        ENDERMAN, //NEW + + +
         SLIME,
+        
         MAGMA_SLIME,
+        HOGLIN,
+        BALZE, //NEW + + +
+        WITHER_SKILLET, //NEW + + +
+        PIGMAN, //NEW + + +
+        BRUTE, //NEW + + +
+        GHAST,
         STRIDER 
         
     }

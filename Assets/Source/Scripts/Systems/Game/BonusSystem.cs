@@ -185,8 +185,6 @@ namespace Source.Scripts.Systems.Game
             pool.ClearSelectedEvent.Add(eventWorld.NewEntity());
             
             yield return new WaitForEndOfFrame();
-
-            
             
             foreach (var task in game.Tasks)
             {
@@ -195,13 +193,6 @@ namespace Source.Scripts.Systems.Game
                     var mergingObjects = new List<int>();
 
                     MergeObjectType mergeType = task.Key;
-                    
-                    // if (config.MergeLevels.Count - 1 != config.MergeLevels.IndexOf(task.Key))
-                    // {
-                    //     mergeType = config.MergeLevels[config.MergeLevels.IndexOf(task.Key) - 1];
-                    //     Debug.Log($"Merge Type: {config.MergeLevels[config.MergeLevels.IndexOf(task.Key) - 1]}");
-                    // }
-                   
                     
                     foreach (var e in filter)
                     {
@@ -216,7 +207,7 @@ namespace Source.Scripts.Systems.Game
                     
                     if (mergingObjects.Count >= 2)
                     {
-                        bool completed = false;
+                        // bool completed = false;
 
                         isMistake = true;
                         
@@ -225,29 +216,30 @@ namespace Source.Scripts.Systems.Game
                             yield return new WaitForSeconds(0.25f);
                             
                             pool.Hoverable.Get(mergingObjects[i]).IsHovered = true;
-                            completed = true;
+                            // completed = true;
+                            isMistake = false;
                         }
 
-                        if (completed == false)
-                        {
-                            bonusView.Button.interactable = false;
-                        
-                            bonusView.Button.transform
-                                .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
-                                    randomness: 90, fadeOut: true)
-                                .OnComplete(() =>
-                                {
-                                    save.Money += bonusView.Cost;
-                                
-                                    pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
-                                
-                                    bonusView.Button.interactable = true;
-                                });
-                        }
-                        else
-                        {
-                            ShowFloatingText(bonusView);
-                        }
+                        // if (completed == false)
+                        // {
+                        //     bonusView.Button.interactable = false;
+                        //
+                        //     bonusView.Button.transform
+                        //         .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
+                        //             randomness: 90, fadeOut: true)
+                        //         .OnComplete(() =>
+                        //         {
+                        //             save.Money += bonusView.Cost;
+                        //         
+                        //             pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+                        //         
+                        //             bonusView.Button.interactable = true;
+                        //         });
+                        // }
+                        // else
+                        // {
+                        //     ShowFloatingText(bonusView);
+                        // }
                         
                         yield break;
                     }
@@ -258,25 +250,40 @@ namespace Source.Scripts.Systems.Game
             
             if(isMistake == true)
             {
+                // bonusView.Button.interactable = false;
+                //         
+                // bonusView.Button.transform
+                //     .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
+                //         randomness: 90, fadeOut: true)
+                //     .OnComplete(() =>
+                //     {
+                //         save.Money += bonusView.Cost;
+                //                 
+                //         pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
+                //         
+                //         bonusView.Button.interactable = true;
+                //         
+                //     });
+                
                 bonusView.Button.interactable = false;
-                        
+                
                 bonusView.Button.transform
                     .DOShakeScale(shakeDuration, new Vector3(shakeStrength, shakeStrength, shakeStrength), vibrato, 
                         randomness: 90, fadeOut: true)
                     .OnComplete(() =>
                     {
                         save.Money += bonusView.Cost;
-                                
+                    
                         pool.UpdateMoneyEvent.Add(eventWorld.NewEntity());
-                        
+                    
                         bonusView.Button.interactable = true;
-                        
                     });
                 
             }
 
             if (isMistake == false)
             {
+                ShowFloatingText(bonusView);
                 isMistake = true;
             }
             
