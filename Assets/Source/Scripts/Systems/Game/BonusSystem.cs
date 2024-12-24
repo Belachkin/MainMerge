@@ -69,15 +69,19 @@ namespace Source.Scripts.Systems.Game
                 if (save.CurrentTutorStepType == TutorStepType.MERGE_1 ||
                     save.CurrentTutorStepType == TutorStepType.MERGE_2 ||
                     save.CurrentTutorStepType == TutorStepType.MERGE_3 ||
-                    save.CurrentTutorStepType == TutorStepType.WAIT_BONUS ||
-                    (bonusView.BonusType == BonusType.Shake && save.CurrentTutorStepType != TutorStepType.DONE) ||
+                    save.CurrentTutorStepType == TutorStepType.WAIT_BONUS_AUTOMERGE ||
+                    save.CurrentTutorStepType == TutorStepType.WAIT_BONUS_TNT||
+                    (save.CurrentTutorStepType == TutorStepType.BONUS_AUTOMERGE && bonusView.BonusType == BonusType.Shake) ||
+                    (save.CurrentTutorStepType == TutorStepType.BONUS_TNT && bonusView.BonusType == BonusType.AutoMerge) ||
                     game.MergeState == MergeStateType.MergeLock)
                 {
                     bonusView.Button.interactable = false;
+                    bonusView.CostOverlappingPanel.SetActive(true);
                 }
                 else
                 {
                     bonusView.Button.interactable = true;
+                    bonusView.CostOverlappingPanel.SetActive(false);
                 }
             }
         }
@@ -99,6 +103,8 @@ namespace Source.Scripts.Systems.Game
                 return;
             }
             
+            pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.BuySound;
+            
             bonusView.Button.transform.DOScale(0.8f, 0.1f).OnComplete(() =>
             {
                 bonusView.Button.transform.DOScale(1f, 0.1f);
@@ -114,15 +120,21 @@ namespace Source.Scripts.Systems.Game
                 case BonusType.AutoMerge:
                     StartCoroutine(AutoMerge(bonusView));
 
-                    if (save.CurrentTutorStepType == TutorStepType.BONUS)
+                    if (save.CurrentTutorStepType == TutorStepType.BONUS_AUTOMERGE)
                     {
-                        save.CurrentTutorStepType = TutorStepType.DONE;
+                        save.CurrentTutorStepType = TutorStepType.WAIT_BONUS_TNT;
                     }
                     
                     break;
                 case BonusType.Shake:
                     StartCoroutine(BonusShake());
                     ShowFloatingText(bonusView);
+                    
+                    if (save.CurrentTutorStepType == TutorStepType.BONUS_TNT)
+                    {
+                        save.CurrentTutorStepType = TutorStepType.DONE;
+                    }
+                    
                     break;
             }
         }

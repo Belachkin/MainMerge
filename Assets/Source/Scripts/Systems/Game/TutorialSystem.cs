@@ -11,7 +11,8 @@ namespace Source.Scripts.Systems.Game
     public class TutorialSystem : GameSystemWithScreen<TutorialUIScreen>
     {
         [SerializeField] private Canvas canvas;
-        [SerializeField] private Transform bonusTransform;
+        [SerializeField] private Transform bonusAutomergeTransform;
+        [SerializeField] private Transform bonusTntTransform;
         
         [SerializeField] private float scaleMultiplier = 1.2f; 
         [SerializeField] private float animationDuration = 0.5f;
@@ -64,13 +65,22 @@ namespace Source.Scripts.Systems.Game
                 fingerSequence.Kill();
                 finger.gameObject.SetActive(false);
             }
-            else if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
+            else if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS_AUTOMERGE)
             {
                 finger.gameObject.SetActive(false);
             }
-            else if(save.CurrentTutorStepType == TutorStepType.BONUS)
+            else if(save.CurrentTutorStepType == TutorStepType.BONUS_AUTOMERGE)
             {
-                finger.transform.position = bonusTransform.position + (Vector3)fingerOffset;
+                finger.transform.position = bonusAutomergeTransform.position + (Vector3)fingerOffset;
+                finger.gameObject.SetActive(true);
+            }
+            else if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS_TNT)
+            {
+                finger.gameObject.SetActive(false);
+            }
+            else if (save.CurrentTutorStepType == TutorStepType.BONUS_TNT)
+            {
+                finger.transform.position = bonusTntTransform.position + (Vector3)fingerOffset;
                 finger.gameObject.SetActive(true);
             }
             else if(finger.activeSelf == false)

@@ -50,7 +50,7 @@ namespace Source.Scripts.Systems.Game
                 if (save.CurrentLevel == 0 && save.CurrentTutorStepType == TutorStepType.MERGE_1 ||
                     save.CurrentTutorStepType == TutorStepType.MERGE_2)
                 {
-                    save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
+                    save.CurrentTutorStepType = TutorStepType.WAIT_BONUS_AUTOMERGE;
                 }
                 
                 Debug.Log(save.CurrentLevel);
@@ -68,9 +68,13 @@ namespace Source.Scripts.Systems.Game
             screen.HidePanel();
             pool.StartLevelEvent.Add(eventWorld.NewEntity());
 
-            if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS)
+            if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS_AUTOMERGE)
             {
-                save.CurrentTutorStepType = TutorStepType.BONUS;
+                save.CurrentTutorStepType = TutorStepType.BONUS_AUTOMERGE;
+            }
+            else if (save.CurrentTutorStepType == TutorStepType.WAIT_BONUS_TNT)
+            {
+                save.CurrentTutorStepType = TutorStepType.BONUS_TNT;
             }
             
             game.MergeState = MergeStateType.Merge;

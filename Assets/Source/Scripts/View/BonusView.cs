@@ -11,5 +11,6 @@ namespace Source.Scripts.View
         public BonusType BonusType;
         public int Cost;
         public TextMeshProUGUI CostText;
+        public GameObject CostOverlappingPanel;
     }
 }

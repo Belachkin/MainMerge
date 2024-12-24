@@ -47,7 +47,10 @@ namespace Source.Scripts.Systems.Game
             }
             
             // Проверяем нажатие мыши
-            if (Input.GetMouseButtonDown(0) && save.CurrentTutorStepType != TutorStepType.BONUS && game.MergeState == MergeStateType.Merge)
+            if (Input.GetMouseButtonDown(0) && 
+                save.CurrentTutorStepType != TutorStepType.BONUS_AUTOMERGE && 
+                save.CurrentTutorStepType != TutorStepType.BONUS_TNT&&
+                game.MergeState == MergeStateType.Merge)
             {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit[] hits = Physics.RaycastAll(ray);
@@ -58,8 +61,11 @@ namespace Source.Scripts.Systems.Game
 
                     if (baseView != null && pool.Hoverable.Has(baseView.Entity))
                     {
+                        
+                        pool.SoundEvent.Add(eventWorld.NewEntity()).AudioClip = audioConfig.SelectSound;
+                        
                         ref var hoverable = ref pool.Hoverable.Get(baseView.Entity);
-
+                        
                         // Проверяем, совпадает ли объект с ожидаемым
                         bool isCorrectObject = false;
 
@@ -86,7 +92,7 @@ namespace Source.Scripts.Systems.Game
                                 }
                                 else if (save.CurrentTutorStepType == TutorStepType.MERGE_2)
                                 {
-                                    save.CurrentTutorStepType = TutorStepType.WAIT_BONUS;
+                                    save.CurrentTutorStepType = TutorStepType.WAIT_BONUS_AUTOMERGE;
                                 }
                             }
                         }

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: {fileID: 0}
   ClickSound: {fileID: 8300000, guid: c549cad84867f0a40baf7dfdbb9020c5, type: 3}
-  BuySound: {fileID: 8300000, guid: 3759dec1138b2304ea46b4859f0f30cc, type: 3}
+  BuySound: {fileID: 8300000, guid: b532f55b2c557774b95efaac8edea490, type: 3}
   VictorySound: {fileID: 8300000, guid: 1316347dfacc4794b90c7fd74a109a8c, type: 3}
   TaskCompleted: {fileID: 8300000, guid: 1fff57f4f37d6814e8e3f5fc97b035ad, type: 3}
-  SelectSound: {fileID: 8300000, guid: 073602df6f1599c4ab1993954521b923, type: 3}
-  MergeSound: {fileID: 8300000, guid: ca450a77ece8bb94db83e89082248318, type: 3}
+  SelectSound: {fileID: 8300000, guid: 1b675e29c0171fb4da7821f6407d4fa4, type: 3}
+  MergeSound: {fileID: 8300000, guid: bcc1fe81f7c169d43bf07518f00bc808, type: 3}
   TNTActivation: {fileID: 8300000, guid: 77ea7aecc4a4682499d906c31dc7c3bd, type: 3}
   TNTExplosion: {fileID: 8300000, guid: c2d785fda8a733642b4cfb19f9964d3f, type: 3}
